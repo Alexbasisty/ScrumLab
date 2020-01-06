@@ -8,8 +8,9 @@
 
 /*  settings */
 
-@import "settings/all";
-@import "settings/colors";
+@import "variables/all";
+@import "variables/colors";
+@import "variables/fonts";
 
 /* elements */
 @import "elements/base";
