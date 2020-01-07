@@ -3,7 +3,7 @@ body {
   font-family: $text-font;
 }
 
-header {
+.app-header {
   background-color: $header_column-text;
   height: 90px;
   display: flex;
@@ -29,12 +29,12 @@ header {
   .user {
     display: flex;
     font-size: 2rem;
-    width: 130px;
     justify-content: space-between;
     align-items: center;
 
     h2 {
       color: #ffffff;
+      padding-right: 25px;
     }
     i {
       color: $food-logo-color;
@@ -42,6 +42,8 @@ header {
     }
   }
 }
+main {
+  display: flex;
 
 aside {
   height: calc(100vh - 90px);
@@ -69,6 +71,64 @@ aside {
 
       i.fas.fa-chevron-right {
         display: block;
+      }
+    }
+  }
+}
+
+  .greeting-section {
+    width: calc(100vw - 336px);
+    height: calc(100vh - 155px);
+    margin: 30px 70px;
+    background-color: $background-screen;
+    border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $header_column-text;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 50px;
+
+    h2 {
+      font-size: 2.3rem;
+      line-height: 3.5rem;
+      padding-bottom: 20px;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      width: 320px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      width: 410px;
+    }
+
+    form.name-insert {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+
+      input {
+        margin-bottom: 10px;
+        padding: 0 10px;
+        width: 292px;
+        height: 30px;
+      }
+
+      button {
+        background-color: $food-logo-color;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border: none;
+        padding: 6px 10px;
+        width: 126px;
       }
     }
   }

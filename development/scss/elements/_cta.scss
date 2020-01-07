@@ -9,13 +9,14 @@ body{
 
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
 
         .text{
             color: white;
             font-family: $text-font, sans-serif;
             font-weight: 400;
+            margin-right:15%;
 
             h3{
                 font-size: 2rem;
