@@ -1,6 +1,4 @@
 body{
-    width: 1300px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
 
@@ -13,19 +11,21 @@ body{
 
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
 
         .client-photo{
             width: 20rem;
             height: 20rem;
             background-color: $nav-side-panel;
+            margin-right: 7%;
         }
 
         .text{
-            width: 50%;
+            width: 40%;
             height: 60%;
             font-family: $text-font, sans-serif;
+    
             h3{
                 font-weight: 500;
                 font-size: 2rem;
