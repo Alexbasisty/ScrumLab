@@ -1,0 +1,75 @@
+body {
+  background: url("https://trello-attachments.s3.amazonaws.com/5dfce9c99c054649291e13e7/5dfce9c99c054649291e1459/x/a06d789d971be1786ad9b53ac57bb689/image.png");
+  font-family: $text-font;
+}
+
+header {
+  background-color: $header_column-text;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px 0 20px;
+
+  h1 {
+    font-family: $logo-font;
+    font-size: 2em;
+
+    #first {
+      font-weight: 100;
+      color: #ffffff;
+    }
+
+    #second {
+      color: $food-logo-color;
+      font-weight: 700;
+    }
+  }
+
+  .user {
+    display: flex;
+    font-size: 2rem;
+    width: 130px;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      color: #ffffff;
+    }
+    i {
+      color: $food-logo-color;
+      font-size: 2.7rem;
+    }
+  }
+}
+
+aside {
+  height: calc(100vh - 90px);
+  background-color: $nav-side-panel;
+  width: 276px;
+
+  div {
+    color: #ffffff;
+    font-size: 1.5rem;
+    height: 75px;
+    padding: 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    i.fas.fa-chevron-right {
+      color: $food-logo-color;
+      font-size: 1.2rem;
+      display: none;
+    }
+
+    &:hover {
+      border-left: 4px solid $food-logo-color;
+      font-weight: 600;
+
+      i.fas.fa-chevron-right {
+        display: block;
+      }
+    }
+  }
+}
