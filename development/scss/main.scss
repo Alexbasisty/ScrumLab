@@ -4,14 +4,7 @@
 // Sass:
 // https://fontawesome.com/how-to-use/on-the-web/using-with/sass
 
-@import "generic/reset";
 
-/*  settings */
-
-@import "variables/all";
-@import "variables/colors";
-@import "variables/fonts";
-
-/* elements */
-@import "elements/base";
-
+body{
+  background-color: #BADA55;
+}
