@@ -42,6 +42,8 @@ body {
     }
   }
 }
+main {
+  display: flex;
 
 aside {
   height: calc(100vh - 90px);
@@ -70,6 +72,23 @@ aside {
       i.fas.fa-chevron-right {
         display: block;
       }
+    }
+  }
+}
+
+  .greeting-section {
+    width: calc(100vw - 336px);
+    height: calc(100vh - 155px);
+    margin: 30px 70px;
+    background-color: $background-screen;
+    border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form.name-insert {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
