@@ -1,0 +1,37 @@
+.newsletter {
+  background-color: $nav-side-panel;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  font: $text-font;
+  font-weight: 400;
+
+  h3 {
+    color: white;
+    font-size: 2.8em;
+    margin-right: 15%;
+  }
+  .newsletter-input {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+    height: 3em;
+    width: 30em;
+
+    .newsletter-email {
+      border: none;
+      height: 100%;
+      width: 70%;
+    }
+    .newsletter-button {
+      background-color: $buttons_screen-headers;
+      height: 100%;
+      width: 30%;
+      border: none;
+      color: white;
+      font: $text-font;
+      font-weight: 700;
+    }}
+}
