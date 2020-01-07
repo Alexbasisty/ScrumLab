@@ -29,12 +29,12 @@ body {
   .user {
     display: flex;
     font-size: 2rem;
-    width: 130px;
     justify-content: space-between;
     align-items: center;
 
     h2 {
       color: #ffffff;
+      padding-right: 25px;
     }
     i {
       color: $food-logo-color;
