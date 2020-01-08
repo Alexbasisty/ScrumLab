@@ -1,0 +1,36 @@
+@mixin display_flex($color, $font-size) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: $font-size;
+  color: $color;
+}
+
+.week-plan {
+  display: flex;
+  flex-direction: column;
+  h4 {
+    color: $buttons_screen-headers;
+    text-align: center;
+  }
+  .week-days {
+    @include display_flex($nav-side-panel, 1.8rem);
+  }
+  .breakfast  {
+  //.breakfast .second-breakfast .soup .main_course .supper {
+    @include display_flex($tables_and-icons, 1.5rem);
+
+  }
+  .second-breakfast {
+    @include display_flex($tables_and-icons, 1.5rem);
+  }
+  .soup {
+    @include display_flex($tables_and-icons, 1.5rem);
+  }
+  .main_course {
+    @include display_flex($tables_and-icons, 1.5rem);
+  }
+  .supper {
+    @include display_flex($tables_and-icons, 1.5rem)
+  }
+}
