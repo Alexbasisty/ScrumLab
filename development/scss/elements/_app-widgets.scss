@@ -1,0 +1,21 @@
+
+body{
+    section.pulpit{
+        width: calc(100vw - 336px);
+        height: calc(100vh - 155px);
+        margin: 30px 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .widgets{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+
+        }
+
+    }
+}
