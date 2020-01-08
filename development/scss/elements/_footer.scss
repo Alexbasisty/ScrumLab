@@ -1,0 +1,21 @@
+.footer {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	background-color: grey;
+	padding: 2em;
+	background-color: $header_column-text;
+        @media (max-width: 500px) {
+        display: block;
+        text-align: center;
+    }
+}
+.footer span {
+	width: 20%;
+	align-content: center;
+}
+.copywright {
+    text-align: center;
+    background-color: $background-screen;
+    padding: 1em;
+}

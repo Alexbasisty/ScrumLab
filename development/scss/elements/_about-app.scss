@@ -1,0 +1,27 @@
+.three-articles-about {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+    background-color: $background-screen;
+    padding: 2em;
+    text-align: center;
+    line-height: 1.8em;
+        @media (max-width: 500px) {
+            display: block;
+            text-align: center;
+        }
+    
+        i {
+            width: 20em;
+            
+        }
+        h3 {
+        font-size: 1.5em;
+        padding-bottom: 5em;
+    }
+}
+
+.three-articles-about article {
+	width: 20%;
+}
+

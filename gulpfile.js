@@ -27,7 +27,7 @@ gulp.task("sass", function() {
     .pipe(sourcemaps.init())
     .pipe(
       autoprefixer({
-        browsers: ["last 4 versions"]
+        overrideBrowserslist: ["last 4 versions"]
       })
     )
     .pipe(sourcemaps.write())
