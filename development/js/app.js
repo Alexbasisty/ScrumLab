@@ -6,7 +6,10 @@ console.clear();
 /*
 	Metoda `.setItem(string)`:
   > Aby zapisać wartość zmiennej `userName` w Local Storage pod nazwą `savedName` użyj: */
-const userName = document.querySelector('#user-name').value();
+const inputEl = document.querySelector('#user-name');
+const userName = inputEl.value;
+const confirmButton = document.querySelector('.user-confirm');
+
 localStorage.setItem('savedName', userName);
 
 /*
