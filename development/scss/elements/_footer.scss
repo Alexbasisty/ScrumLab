@@ -2,9 +2,8 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
-	background-color: grey;
+	background-color: $nav-side-panel;
 	padding: 2em;
-	background-color: $header_column-text;
         @media (max-width: 500px) {
         display: block;
         text-align: center;
