@@ -21,7 +21,7 @@ body {
     }
 
     #second {
-      color: $food-logo-color;
+      color: $buttons_screen-headers;
       font-weight: 700;
      }
   }
@@ -37,7 +37,7 @@ body {
       padding-right: 25px;
     }
     i {
-      color: $food-logo-color;
+      color: $buttons_screen-headers;
       font-size: 2.7rem;
     }
   }
@@ -61,13 +61,13 @@ aside {
     cursor: pointer;
 
     i.fas.fa-chevron-right {
-      color: $food-logo-color;
+      color: $buttons_screen-headers;
       font-size: 1.2rem;
       display: none;
     }
 
     &:hover {
-      border-left: 4px solid $food-logo-color;
+      border-left: 4px solid $buttons_screen-headers;
       font-weight: 600;
 
       i.fas.fa-chevron-right {
@@ -82,7 +82,7 @@ aside {
     height: calc(100vh - 155px);
     margin: 30px 70px;
     background-color: $background-screen;
-    border: 1px dashed black;
+    border: 1px dashed $tables_and-icons;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,7 +123,7 @@ aside {
       }
 
       button {
-        background-color: $food-logo-color;
+        background-color: $buttons_screen-headers;
         color: #ffffff;
         font-size: 1.2rem;
         font-weight: 600;
