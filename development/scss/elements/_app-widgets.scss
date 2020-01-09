@@ -19,7 +19,26 @@ body{
             height: 200px ;
 
 
-            .
+            .left-side{
+                display: flex;
+                flex-direction: row;
+
+                border: 1px solid blue;
+
+                .add-recipe{
+                    border: 1px dashed $success-message;
+                }
+                .add-plan
+                {
+                    border: 1px dashed $success-message;
+                }
+
+            }
+
+            .right-side{
+                border: 1px solid blueviolet;
+
+            }
         }
 
 
