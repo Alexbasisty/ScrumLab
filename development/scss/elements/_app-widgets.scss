@@ -1,0 +1,47 @@
+
+body{
+    section.pulpit{
+        width: calc(100vw - 336px);
+        height: calc(100vh - 155px);
+        margin: 30px 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+
+        .widgets{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid pink;
+
+            width: calc(100vw - 336px);
+            height: 200px ;
+
+
+            .left-side{
+                display: flex;
+                flex-direction: row;
+
+                border: 1px solid blue;
+
+                .add-recipe{
+                    border: 1px dashed $success-message;
+                }
+                .add-plan
+                {
+                    border: 1px dashed $success-message;
+                }
+
+            }
+
+            .right-side{
+                border: 1px solid blueviolet;
+
+            }
+        }
+
+
+    }
+
+}

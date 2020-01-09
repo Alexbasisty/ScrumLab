@@ -28,17 +28,17 @@
       list-style: none;
       text-transform: uppercase;
       font-weight: 500;
-        a {
-          margin-left: 6rem;
-          font-family: $text-font;
-          color: white;
-          text-decoration: none;
-          &:first-of-type{
-            color: $food-logo-color;
-          }
+      a{
+        margin-left: 6rem;
+        font-family: $text-font;
+        color: white;
+        text-decoration: none;
+        &:first-of-type {
+          color: $food-logo-color;
         }
 
       }
     }
 
+}
 }

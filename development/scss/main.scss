@@ -19,10 +19,13 @@
 @import "elements/carousel";
 @import "elements/cta";
 @import "elements/about-me";
-@import "elements/_aboutapp";
+@import "elements/about-app";
 @import "elements/_footer";
 @import "elements/_newsletter";
 @import "elements/list-of-recipes";
+
+/* app */
+@import "elements/app-widgets";
 
 /* font awesome 5*/
 @import "brands";
@@ -30,4 +33,6 @@
 @import "regular";
 @import "solid";
 @import "v4-shims";
+
+
 
