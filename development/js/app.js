@@ -9,17 +9,19 @@ function loadPage(){
         greetingSection.style.display = "none";
     }
 }
-formEl.addEventListener('submit', function (event) {
-    event.preventDefault();
-    const userName = document.querySelector('#user-name').value;
-    console.log(userName);
+if (formEl !== null) {
+    formEl.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const userName = document.querySelector('#user-name').value;
+        console.log(userName);
 
-    localStorage.setItem('savedName', JSON.stringify(userName));
-    userDefault.innerText = JSON.parse(localStorage.savedName);
+        localStorage.setItem('savedName', JSON.stringify(userName));
+        userDefault.innerText = JSON.parse(localStorage.savedName);
 
 
-    greetingSection.style.display = "none";
-});
+        greetingSection.style.display = "none";
+    });
+}
 
 loadPage();
 
