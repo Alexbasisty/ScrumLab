@@ -2,35 +2,35 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   font-size: $font-size;
   color: $color;
+  border-bottom: 1px solid $tables_and-icons;
 }
 
 .week-plan {
   display: flex;
   flex-direction: column;
+  background-color: $background-screen;
+  border: 1px dashed $tables_and-icons;
+
   h4 {
     color: $buttons_screen-headers;
     text-align: center;
+    font-size: 1.3rem;
   }
-  .week-days {
-    @include display_flex($nav-side-panel, 1.8rem);
-  }
-  .breakfast  {
-  //.breakfast .second-breakfast .soup .main_course .supper {
-    @include display_flex($tables_and-icons, 1.5rem);
 
+  .week-days {
+    @include display_flex($nav-side-panel, 1.5rem);
+    height: 50px;
   }
-  .second-breakfast {
-    @include display_flex($tables_and-icons, 1.5rem);
+  .breakfast, .second-breakfast, .soup, .main_course, .supper {
+    @include display_flex($tables_and-icons, 1.3rem);
   }
-  .soup {
-    @include display_flex($tables_and-icons, 1.5rem);
+  .breakfast, .soup, .supper {
+    height: 50px;
   }
-  .main_course {
-    @include display_flex($tables_and-icons, 1.5rem);
-  }
-  .supper {
-    @include display_flex($tables_and-icons, 1.5rem)
+  .second-breakfast, .main_course {
+    height: 75px;
   }
 }
