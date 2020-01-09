@@ -59,6 +59,11 @@ aside {
     justify-content: space-between;
     align-items: center;
 
+    a{
+      text-decoration: none;
+      color: white;
+    }
+
     i.fas.fa-chevron-right {
       color: $food-logo-color;
       font-size: 1.2rem;
