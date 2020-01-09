@@ -5,40 +5,40 @@
   width: 100%;
   height: 6.25rem;
   background-color: $header_column-text;
-  .container{
+  .container {
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    h1{
+    h1 {
       font-family: $logo-font;
       font-size: 2.5rem;
-      #first{
-        font-weight:100;
+      #first {
+        font-weight: 100;
         color: white;
       }
-      #second{
+      #second {
         color: $food-logo-color;
         font-weight: 700;
       }
     }
-    .menu{
+    .menu {
       display: flex;
       list-style: none;
       text-transform: uppercase;
       font-weight: 500;
-      a{
-        margin-left: 6rem;
-        font-family: $text-font;
-        color: white;
-        text-decoration: none;
-        &:first-of-type{
-          color: $food-logo-color;
+        a {
+          margin-left: 6rem;
+          font-family: $text-font;
+          color: white;
+          text-decoration: none;
+          &:first-of-type{
+            color: $food-logo-color;
+          }
         }
-      }
 
+      }
     }
-  }
 
 }

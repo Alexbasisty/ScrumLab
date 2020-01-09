@@ -60,6 +60,11 @@ aside {
     align-items: center;
     cursor: pointer;
 
+    a{
+      text-decoration: none;
+      color: white;
+    }
+
     i.fas.fa-chevron-right {
       color: $buttons_screen-headers;
       font-size: 1.2rem;
