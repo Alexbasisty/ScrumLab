@@ -1,0 +1,57 @@
+.footer {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	padding: 2em;
+	background-color: $nav-side-panel;
+	color: $background-screen;
+	line-height: 1.8em;
+	
+	@media (max-width: 500px) {
+	display: block;
+	text-align: center;
+	}
+
+	span {
+		width: 20%;
+		align-content: center;
+	}
+	
+	h3 {
+	font-size: 1.5em;
+	padding-bottom: 1em;
+	}
+
+	li {
+		list-style-type: circle;
+	}
+
+	input {
+		margin-bottom: 1em;
+	}
+
+	button {
+		background-color: $buttons_screen-headers;
+		color: $background-screen;
+		margin-left: -0.2em;
+		border: none;
+	}
+
+	a {
+		clear: left;
+		margin: 1em;
+	}
+
+}
+
+.copywright {
+    text-align: center;
+    background-color: $header_column-text;
+	padding: 1.2em;
+	a {
+		color: $buttons_screen-headers;
+		text-decoration: none;
+	}
+}
+
+
