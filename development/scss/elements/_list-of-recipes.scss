@@ -38,7 +38,7 @@ main{
       }
 
       .table-of-recipes {
-        margin: 20px;
+        margin: 10px;
         text-align: left;
         line-height: normal;
         width: 100%;
@@ -46,15 +46,15 @@ main{
         flex-direction: column;
         li {
           border-bottom: 1px solid lightgray;
-          padding: 10px;
+          padding: 10px 0 10px 10px;
           &:first-of-type {
             width: 5%;
           }
           &:nth-of-type(2) {
-            width: 20%;
+            width: 25%;
           }
           &:nth-of-type(3) {
-            width: 60%;
+            width: 55%;
           }
           &:last-of-type {
             width: 15%;
@@ -62,7 +62,7 @@ main{
         }
         .nav {
           color: $header_column-text;
-          font-size: 1.5rem;
+          font-size: 1.25rem;
           text-transform: uppercase;
           font-weight: 700;
           border-top: 1px solid lightgray;

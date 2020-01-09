@@ -1,6 +1,18 @@
 body{
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: $tables_and-icons;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $nav-side-panel;
+}
 main{
   .list-of-schedules {
     width: calc(100vw - 336px);
@@ -17,7 +29,7 @@ main{
     .container {
       padding: 30px;
       .table-of-schedules {
-        margin: 20px;
+        margin: 10px;
         text-align: left;
         line-height: normal;
         width: 100%;
@@ -25,28 +37,42 @@ main{
         flex-direction: column;
         li {
           border-bottom: 1px solid lightgray;
-          padding: 10px;
+          padding: 10px 0 10px 10px;
 
           &:first-of-type {
-            width: 5%;
+            width: 3%;
           }
 
           &:nth-of-type(2) {
-            width: 20%;
+            width: 15%;
           }
 
           &:nth-of-type(3) {
             width: 60%;
           }
-
+          &:nth-of-type(4) {
+            width: 10%;
+          }
           &:last-of-type {
-            width: 15%;
+            text-align: center;
+            margin-right: 5px;
+            width: 12%;
           }
         }
+        .nav {
+          color: $header_column-text;
+          font-size: 1.25rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          border-top: 1px solid lightgray;
+          border-bottom: 1px solid lightgray;
+          display: flex;
+
         }
         .all-schedules {
           height: 450px;
           overflow: auto;
+
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -60,6 +86,7 @@ main{
                 font-size: .9rem;
               }
               &:last-of-type {
+                text-align: right;
                 i {
                   cursor: pointer;
                   font-size: 1.5rem;
