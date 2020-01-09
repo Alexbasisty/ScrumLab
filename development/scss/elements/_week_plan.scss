@@ -50,10 +50,12 @@
           width: (100%/7) * $i;
         }
       }
+
     }
 
     .breakfast, .second-breakfast, .soup, .main_course, .supper {
       @include display_flex($tables_and-icons, 1.3rem);
+      align-items: center;
     }
 
     .breakfast, .soup, .supper {
