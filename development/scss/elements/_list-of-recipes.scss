@@ -82,6 +82,9 @@ main{
               color: $tables_and-icons;
               font-size: 1rem;
               font-weight: 400;
+              &:nth-of-type(3){
+                font-size: .9rem;
+              }
               &:last-of-type {
                 i {
                   cursor: pointer;
