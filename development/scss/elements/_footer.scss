@@ -79,6 +79,14 @@
 		}
 	
 
+	a {
+		clear: left;
+		margin: 1em;
+
+		&:first-of-type {
+			margin-left: 0;
+		}
+
 	}
 
 
