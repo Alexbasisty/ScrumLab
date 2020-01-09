@@ -3,10 +3,12 @@ const formEl = document.querySelector('.name-insert');
 const userDefault = document.querySelector('.user h2');
 const greetingSection = document.querySelector('.greeting-section');
 
-function loadPage(){
+function loadPage() {
     if (localStorage.getItem('savedName') !== null && localStorage.savedName.length > 0) {
         userDefault.innerText = JSON.parse(localStorage.savedName);
-        greetingSection.style.display = "none";
+        if (greetingSection !== null) {
+            greetingSection.style.display = "none";
+        }
     }
 }
 if (formEl !== null) {
