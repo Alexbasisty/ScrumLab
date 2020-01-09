@@ -7,10 +7,18 @@
   color: $color;
   border-bottom: 1px solid $tables_and-icons;
 }
+@mixin clearfix {
+  &:before, &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 
 .week-plan {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: $background-screen;
   border: 1px dashed $tables_and-icons;
 
@@ -23,14 +31,37 @@
   .week-days {
     @include display_flex($nav-side-panel, 1.5rem);
     height: 50px;
+    width: 95%;
+    border-top: 1px solid $tables_and-icons;
   }
-  .breakfast, .second-breakfast, .soup, .main_course, .supper {
-    @include display_flex($tables_and-icons, 1.3rem);
-  }
-  .breakfast, .soup, .supper {
-    height: 50px;
-  }
-  .second-breakfast, .main_course {
-    height: 75px;
+  .meals-plan, .grid {
+    width: 94%;
+    margin: 0 auto;
+    .row {
+      @include clearfix;
+
+      [class*="col-"] {
+        float: left;
+        min-height: 50px;
+      }
+
+      @for $i from 1 through 7 {
+        .col-#{$i} {
+          width: (100%/7) * $i;
+        }
+      }
+    }
+
+    .breakfast, .second-breakfast, .soup, .main_course, .supper {
+      @include display_flex($tables_and-icons, 1.3rem);
+    }
+
+    .breakfast, .soup, .supper {
+      height: 50px;
+    }
+
+    .second-breakfast, .main_course {
+      height: 75px;
+    }
   }
 }
