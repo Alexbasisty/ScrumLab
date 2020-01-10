@@ -8,7 +8,7 @@
     flex-direction: column;
     color: $header_column-text;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
 
     .container {
       padding: 30px;
@@ -52,6 +52,7 @@
         padding: 0 10px;
         margin-left: 0.5em;
         width: 720px;
+        font-size: 0.9em;
 
         &#new-receipe-name {
             height: 30px;
@@ -64,29 +65,46 @@
 }
 
 .add-receipe-details {
-    table {
-    width: 100%;
-    border-spacing: 1em;
-        th {
-            width: 10em;
-        }
-        td {
-            width: 10em;
-        }
-    }
-    
-}
+    display: flex;
+    flex-direction: row;
 
-.instructions {
-    ol {
-	border: 0;
-	height: 20em;
-	overflow: scroll;
+    .recipe-instruction {
+        width: 45%; margin-right: 20px;
     }
+
+    .instruction-list {
+        overflow-y: scroll;
+    }
+    ul {
+        display: flex;
+    }
+
+.recipe-instruction {
+
+
     span {
         height: 10em;
     }
     input {
         width: 30vw;
+    }
+}
+    .recipe-description {
+        .description-list {
+            overflow-y: scroll;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+
+                li {
+                    &:before {
+                        content: '\2022';
+                        width: 1em;
+                        float: left;
+                    }
+                }
+            }
+        }
     }
 }
