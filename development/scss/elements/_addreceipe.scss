@@ -3,7 +3,7 @@
     height: calc(100vh - 155px);
     margin: 30px 70px;
     background-color: $background-screen;
-    border: 1px dashed black;
+    border: 1px dashed $tables_and-icons;
     display: flex;
     flex-direction: column;
     color: $header_column-text;
@@ -23,11 +23,15 @@
         font-size: 1.75rem;
         text-transform: uppercase;
         text-align: left;
-        color: $food-logo-color;
+        color: $buttons_screen-headers;
 
       }
     button {
-        height: 2em;
+        padding: 6px 10px;
+        border: none;
+        font-weight: 600;
+        background-color: $buttons_screen-headers;
+        color: #ffffff;
         cursor: pointer;
         margin-bottom: 0.5em;
     }
@@ -36,9 +40,26 @@
 .add-receipe-overall-form {
 	display: flex;
     padding: 0.5em;
+
+    label {
+        font-size: 1.5em;
+        font-weight: 400;
+        width: 179px;
+        text-align: left;
+    }
     input {
         flex: 1;
+        padding: 0 10px;
         margin-left: 0.5em;
+        width: 720px;
+
+        &#new-receipe-name {
+            height: 30px;
+        }
+
+        &#new-receipe-description {
+            height: 72px;
+        }
     }
 }
 
