@@ -91,6 +91,7 @@
 
 
 }
+}
 
 .copywright {
     text-align: center;
@@ -98,10 +99,10 @@
 	padding: 1.2em;
 	color: white;
 	font-size: 1.2rem;
-	a {
+		a {
 		color: $buttons_screen-headers;
 		text-decoration: none;
+		}
 	}
-}
 
 
