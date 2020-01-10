@@ -8,7 +8,7 @@
 	line-height: 1.8em;
 
 	height: 200px;
-	
+
 	@media (max-width: 500px) {
 	display: block;
 	text-align: center;
@@ -25,7 +25,7 @@
 			align-items: flex-start;
 		}
 	}
-	
+
 	h3 {
 	font-size: 2rem;
 	padding-bottom: 1em;
@@ -44,7 +44,7 @@
 		flex-direction: row;
 		height: 2rem;
 		width: 15rem;
-		
+
 		input{
 			border: none;
 			height: 100%;
@@ -64,32 +64,32 @@
 		}
 	}
 
-	.footer-links{
-		
+	.footer-links {
+
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
 		margin-top: 2rem;
-	
+
 		a {
 			clear: left;
 			margin: 1em;
 			font-size: 1rem;
 		}
-	
 
-	a {
-		clear: left;
-		margin: 1em;
 
-		&:first-of-type {
-			margin-left: 0;
+		a {
+			clear: left;
+			margin: 1em;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+
 		}
 
 	}
-
-
 }
 
 .copywright {
