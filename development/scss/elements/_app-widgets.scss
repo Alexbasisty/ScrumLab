@@ -7,12 +7,13 @@ body{
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
+        box-sizing: border-box;
 
         .widgets{
-            box-sizing: border-box;
+            
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             // border: 1px solid pink;
 
@@ -21,6 +22,7 @@ body{
 
 
             .left-side{
+
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -28,7 +30,7 @@ body{
                 // border: 1px solid blue;
 
                 .add-recipe, .add-plan{
-                    border: 2px dashed $success-message;
+                    border: 1px dashed $success-message;
                     width: 220px;
                     height: 200px;
                     margin:10px;
@@ -39,34 +41,23 @@ body{
                     justify-content: center;
                     align-items: center;
 
-                    .plus{
-                        box-sizing: border-box;
-                        width: 70px;
-                        height: 70px;
-                        border: 6px solid $success-message;
-                        border-radius: 10px;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content:center;
-                        align-items: center;
-
-                        i {
-                            font-size: 2rem;
-                            color: $success-message;
-                            font-weight: 400;
-                        }
-                        // .fa-plus-square-o:before {
-                        //     // content: "\f196";
-                        //     // content: fa-content($fa-var-plus-square));
-                        // }
+                    i {
+                        font-size: 5rem;
+                        color: $success-message;
+                        color: $success-message;
+                    }
 
                     }
 
                     p{
-                        font-size: 1.5rem;
+                        font-size: 1.3rem;
                         color: $success-message;
                         margin-top: 1.5rem;
                         font-weight: 600;
+                    }
+
+                    .add-recipe{
+                        margin-left: 0;
                     }
                 }
 
@@ -74,38 +65,86 @@ body{
 
             .right-side{
                 // border: 1px solid blueviolet;
-                width: 900px;
+                width: calc(100vw - 820px);
+                margin-left: 10px;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: flex-end;
                 align-items: center;
+                margin-right: 0;
 
                 .notification{
-                    border: 2px dashed black;
+                    border:1px dashed grey;
                     width: 100%;
-                    height: 25%;
+                    height: 55px;
                     background-color: $background-screen;
                     font-weight: 600;
                     font-size: 1.5rem;
-
+                    
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-around;
                     align-items: center;
+                    margin:auto;
+
+                    i{
+                        font-size: 2.5rem;
+                        display: block;
+                    }
+
+                    p{
+
+                    }
+                    div{
+                        
+                        border: none;
+                        border-radius: 2px;
+                    }
+                    i.fa-times{
+                        font-size: 1rem;
+                        padding: 1px 5px;
+                        color: $background-screen;
+                    }
                 }
 
                 .info{
-                    border: 2px dashed $info-message;
+                    border: 1px dashed $info-message;
                     color: $info-message;
+                    margin-bottom: 5px;
+                    margin-top: 0;
+                    
+                    p{
+                        color: $info-message;
+                        padding: 3px auto; 
+                    }
+                    .cross{
+                        background-color: $info-message;
+                    }
+                    
                 }
                 .orange{
-                    border: 2px dashed $warning-message;
+                    border: 1px dashed $warning-message;
                     color: $warning-message;
+                    margin: 5px auto;
+
+                    p{
+                        color: $warning-message;
+                    }
+                    .cross{
+                        background-color: $warning-message;
+                    }
                 }
                 .gratulation{
-                    border: 2px dashed $success-message;
+                    border: 1px dashed $success-message;
                     color: $success-message;
+                    margin-top: 10px;
+
+                    p{
+                        color: $success-message;
+                    }
+                    .cross{
+                        background-color: $success-message;
+                    }
                 }
 
             }
@@ -114,4 +153,3 @@ body{
 
     }
 
-}
