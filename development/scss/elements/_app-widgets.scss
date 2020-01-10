@@ -86,23 +86,36 @@ body{
                     flex-direction: row;
                     align-items: center;
                     margin:auto;
+                    position: relative;
 
                     i{
                         font-size: 2.5rem;
                         display: block;
+                        margin-left: 10px;
                     }
 
                     p{
-
+                       position: absolute;
+                       left:8%;
+                       top:-10%;
                     }
                     div{
                         
                         border: none;
                         border-radius: 2px;
+                        position: absolute;
+                        right: 1%;
+                        top: 10%;
+                        width: 22px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+
                     }
                     i.fa-times{
+                        margin: 1px 5px;
                         font-size: 1rem;
-                        padding: 1px 5px;
                         color: $background-screen;
                     }
                 }
