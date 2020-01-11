@@ -37,6 +37,9 @@ const addRecipeSection = document.querySelector('section.add-receipe-form');
 const saveCloseButton = document.querySelector('button.save-close');
 const addInstructionsButton = document.querySelector('.recipe-instruction .add-recipe');
 const addDescriptionButton = document.querySelector('.recipe-description .add-recipe');
+const instructionListEl = document.querySelector('.instruction-list');
+
+
 
 
 addRecipeButton.addEventListener('click', function (event) {
@@ -49,16 +52,42 @@ saveCloseButton.addEventListener('click', function (event) {
     addRecipeSection.classList.toggle('hidden');
 });
 
-const recipe = {
-    name: "value1",
-    description: "value2",
-    instruction: "value3"
-};
-
+class Recipe{
+    constructor(name, description, instruction){
+        this.name = name;
+        this.description = description;
+        this.instruction = instruction
+    }
+}
 
 addInstructionsButton.addEventListener('click', function () {
     const instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
-    console.log(instructionFieldValue);
+
+    const newRecipe = new Recipe();
+    newRecipe.instruction = instructionFieldValue;
+    localStorage.setItem('recipe', JSON.stringify(newRecipe));
+
+    if (instructionListEl.hasChildNodes() === true) {
+        const recipeCounter = parseInt(instructionListEl.lastElementChild.firstElementChild.innerText);
+
+        const instructionUlEl = document.createElement('ul');
+        const ulInner = `
+              <li>${recipeCounter + 1}.</li>
+              <li>${instructionFieldValue}.<i class=\"far fa-edit\"></i><i class=\"far fa-trash-alt\"></i></li>
+`;
+        instructionUlEl.innerHTML = ulInner;
+        instructionListEl.appendChild(instructionUlEl);
+    } else {
+        const instructionUlEl = document.createElement('ul');
+        const recipeCounter = 1;
+        const ulInner = `
+              <li>${recipeCounter}.</li>
+              <li>${instructionFieldValue}.<i class=\"far fa-edit\"></i><i class=\"far fa-trash-alt\"></i></li>
+`;
+        instructionUlEl.innerHTML = ulInner;
+        instructionListEl.appendChild(instructionUlEl);
+        console.log(instructionFieldValue);
+    }
 });
 
 addDescriptionButton.addEventListener('click', function (event) {
