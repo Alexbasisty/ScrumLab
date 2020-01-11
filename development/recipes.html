@@ -50,7 +50,7 @@
             </div>
             <div class="add-receipe-overall-form">
                 <label for="new-receipe-description">Opis przepisu</label>
-                <textarea type="text" id="new-receipe-description" name="new-receipe-description" rows="3" maxlength="360"></textarea>
+                <input type="text" id="new-receipe-description" name="new-receipe-description" rows="3" maxlength="360">
             </div>
         </div>
     
@@ -58,10 +58,10 @@
             <div class="recipe-instruction">
                     <h2>INSTRUKCJE</h2>
 
-
-                <textarea type="text" id="new-receipe-instruction" rows="3" name="new-receipe-instruction" maxlength="150"></textarea>
-                <i class="fas fa-plus-square add-recipe"></i>
-
+                <div class="instruction-input">
+                    <textarea type="text" id="new-receipe-instruction" rows="3" name="new-receipe-instruction" maxlength="150"></textarea>
+                    <i class="fas fa-plus-square add-recipe"></i>
+                </div>
                     <div class="instruction-list">
                         <ul>
                             <li>1.</li>
@@ -90,41 +90,43 @@
                      </div>
             </div>
 
-                        <div class="recipe-description">
-                            <h2>SKŁADNIKI</h2>
-                            <input type="text" id="new-receipe-ingredient" name="new-receipe-ingredient" maxlength="50"><i class="fas fa-plus-square add-recipe"></i>
-                            <div class="description-list">
-                                <ul>
-                                    <li>brukselka 300g
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>ziemniaki 500g
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>Fix Naturalnie makaronowa z szynką Knorr 1 szt.
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>średnia cebula 1szt.
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>ząbek czosnku 1szt.
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>kiełbasa np. śląska 500g
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>śmietana 18% 200 ml
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>Rama Smaż jak szef kuchni, wariant klasyczny 4 łyżki
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                    <li>gałązka tymianku 1 szt.
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i></li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="recipe-description">
+                <h2>SKŁADNIKI</h2>
+                <div class="recipe-input">
+                    <input type="text" id="new-receipe-ingredient" name="new-receipe-ingredient" maxlength="50"><i class="fas fa-plus-square add-recipe"></i>
+                </div>
+                <div class="description-list">
+                    <ul>
+                        <li>brukselka 300g
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>ziemniaki 500g
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>Fix Naturalnie makaronowa z szynką Knorr 1 szt.
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>średnia cebula 1szt.
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>ząbek czosnku 1szt.
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>kiełbasa np. śląska 500g
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>śmietana 18% 200 ml
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>Rama Smaż jak szef kuchni, wariant klasyczny 4 łyżki
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                        <li>gałązka tymianku 1 szt.
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt"></i></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     </section>

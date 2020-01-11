@@ -51,17 +51,17 @@
         flex: 1;
         padding: 0 10px;
         margin-left: 1em;
-        width: 720px;
+        width: 700px;
         font-size: 0.9em;
 
         &#new-receipe-name {
             height: 30px;
         }
     }
-    textarea#new-receipe-description {
+    #new-receipe-description {
         height: 52px;
-        width: 720px;
-        resize: none;
+        width: 700px;
+        flex: 1;
         padding: 10px;
         margin-left: 1em;
         font-size: 0.9em;
@@ -83,6 +83,10 @@
         margin-bottom: 8px;
     }
 
+    .instruction-input {
+        height: 5em;
+    }
+
     .recipe-instruction {
         width: 50%;
         padding-right: 20px;
@@ -98,14 +102,18 @@
     .instruction-list {
         overflow-y: scroll;
         height: 198px;
+        margin-top: 1em;
+        width: calc(100% - 30px);
     }
     ul {
         display: flex;
+        li {
+            padding-bottom: 0.5em;
+            font-weight: 400;
+        }
     }
 
     .recipe-instruction {
-
-
         span {
             height: 10em;
         }
@@ -116,15 +124,24 @@
     .recipe-description {
         width: 50%;
 
+        .recipe-input {
+            height: 5em;
+        }
+
         .description-list {
             overflow-y: scroll;
             height: 198px;
+            margin-top: 1em;
+            width: calc(100% - 30px);
+
 
             ul {
                 display: flex;
                 flex-direction: column;
 
                 li {
+                    padding-bottom: 0.5em;
+                    font-weight: 400;
                     &:before {
                         content: '\2022';
                         width: 1em;
