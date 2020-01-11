@@ -1,3 +1,4 @@
+
 .add-receipe-form {
     width: calc(100vw - 336px);
     height: calc(100vh - 155px);
@@ -48,22 +49,23 @@
         text-align: left;
     }
     input {
-        flex: 1;
         padding: 0 10px;
         margin-left: 1em;
-        width: 720px;
+        flex: 1;
         font-size: 0.9em;
+        margin-right: 50px;
 
         &#new-receipe-name {
             height: 30px;
         }
     }
     textarea#new-receipe-description {
-        height: 52px;
-        width: 720px;
+        height: 72px;
+        flex: 1;
         resize: none;
-        padding: 10px;
-        margin-left: 1em;
+        padding: 0 10px;
+        margin-left: 1.25em;
+        margin-right: 50px;
         font-size: 0.9em;
         line-height: 1.3em;
     }
@@ -92,6 +94,7 @@
             padding: 0 10px;
             width: calc(100% - 60px);
             height: 76px;
+            font-size: 1rem;
        }
     }
 
@@ -145,12 +148,19 @@
 
 .far.fa-edit {
     color: $warning-message;
+    cursor: pointer;
 }
 
 .far.fa-trash-alt {
     color: $basket-icon;
+    cursor: pointer;
 }
 .fa-plus-square.add-recipe {
     color: $success-message;
     font-size: 2rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
