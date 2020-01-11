@@ -1,0 +1,109 @@
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 5rem;
+	background-color: $nav-side-panel;
+	color: $background-screen;
+	line-height: 1.8em;
+
+	height: 200px;
+	
+	@media (max-width: 500px) {
+	display: block;
+	text-align: center;
+	}
+
+	span {
+		width: 25%;
+		align-content: center;
+		margin: auto 3%;
+		&:last-of-type{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+		}
+	}
+	
+	h3 {
+	font-size: 2rem;
+	padding-bottom: 1em;
+	}
+	p{
+		font-size: 1.5rem;
+	}
+
+	li {
+		font-size: 1.5rem;
+		list-style-type: disc;
+	}
+
+	.footer-input-button{
+		display: flex;
+		flex-direction: row;
+		height: 2rem;
+		width: 15rem;
+		
+		input{
+			border: none;
+			height: 100%;
+			width: 70%;
+			padding: 0px 10px;
+		}
+		button{
+			background-color: $buttons_screen-headers;
+			height: 100%;
+			width: 30%;
+			border: none;
+			color: white;
+			font: $text-font;
+			font-weight: 600;
+			margin:0;
+			font-size: 1rem;
+		}
+	}
+
+	.footer-links {
+
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		margin-top: 2rem;
+
+		a {
+			clear: left;
+			margin: 1em;
+			font-size: 1rem;
+		}
+
+
+		a {
+			clear: left;
+			margin: 1em;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+    
+    }
+  
+  }
+}
+
+
+
+
+.copywright {
+    text-align: center;
+    background-color: $header_column-text;
+	padding: 1.2em;
+	color: white;
+	font-size: 1.2rem;
+	a {
+		color: $buttons_screen-headers;
+		text-decoration: none;
+	}
+}
+

@@ -1,0 +1,44 @@
+
+section.features{
+    background-color: $background-screen;
+
+    .three-articles-about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $background-screen;
+        padding: 4rem;
+        margin-top: 4rem;;
+        margin-bottom: 2em;
+        text-align: center;
+        line-height: 1.8em;
+        color: $nav-side-panel;
+        
+
+    
+            @media (max-width: 500px) {
+                display: block;
+                text-align: center;
+            }
+        
+            i {
+                padding-bottom: 0.5em;
+                margin-bottom: 1rem;
+                font-size: 4.5rem;
+                
+            }
+            h3 {
+            font-size: 1.8rem;
+            padding-bottom: 1em;
+        }
+    }
+    
+    .three-articles-about article {
+        width: 20%;
+        margin:auto 7%;
+    }
+    
+    article:nth-child(0) {
+        align-self: center;
+    }
+}
