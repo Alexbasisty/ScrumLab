@@ -50,19 +50,25 @@
     input {
         flex: 1;
         padding: 0 10px;
-        margin-left: 0.5em;
+        margin-left: 1em;
         width: 720px;
         font-size: 0.9em;
 
         &#new-receipe-name {
             height: 30px;
         }
-
-        &#new-receipe-description {
-            height: 72px;
-        }
     }
-}
+    textarea#new-receipe-description {
+        height: 52px;
+        width: 720px;
+        resize: none;
+        padding: 10px;
+        margin-left: 1em;
+        font-size: 0.9em;
+        line-height: 1.3em;
+    }
+    }
+
 
 .add-receipe-details {
     display: flex;
@@ -78,7 +84,15 @@
     }
 
     .recipe-instruction {
-        width: 45%; margin-right: 20px;
+        width: 50%;
+        padding-right: 20px;
+
+        textarea {
+            resize: none;
+            padding: 0 10px;
+            width: calc(100% - 60px);
+            height: 76px;
+       }
     }
 
     .instruction-list {
@@ -100,7 +114,7 @@
         }
     }
     .recipe-description {
-
+        width: 50%;
 
         .description-list {
             overflow-y: scroll;
@@ -119,6 +133,13 @@
                 }
             }
         }
+
+        input#new-receipe-ingredient {
+            width: calc(100% - 60px);
+            margin-right: 5px;
+            height: 37px;
+            padding: 0 10px;
+        }
     }
 }
 
@@ -128,4 +149,8 @@
 
 .far.fa-trash-alt {
     color: $basket-icon;
+}
+.fa-plus-square.add-recipe {
+    color: $success-message;
+    font-size: 2rem;
 }
