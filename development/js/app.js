@@ -64,31 +64,33 @@ class Recipe{
 addInstructionsButton.addEventListener('click', function () {
     let instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
 
-    if (instructionListEl.hasChildNodes() === true) {
-        const recipeCounter = parseInt(instructionListEl.lastElementChild.firstElementChild.innerText);
 
         const instructionUlEl = document.createElement('ul');
         const ulInner = `
-              <li>${recipeCounter + 1}.</li>
-              <li>${instructionFieldValue}.<i class=\"far fa-edit\"></i><i class=\"far fa-trash-alt\"></i></li>
-         `;
-        instructionUlEl.innerHTML = ulInner;
-        if (instructionFieldValue.length > 0) {
-            instructionListEl.appendChild(instructionUlEl);
-        }
-    } else {
-        const instructionUlEl = document.createElement('ul');
-        const recipeCounter = 1;
-        const ulInner = `
-              <li>${recipeCounter}.</li>
+              <li id="recipeCounter"></li>
               <li>${instructionFieldValue}.<i class="far fa-edit"></i><i class="far fa-trash-alt"></i></li>
          `;
         instructionUlEl.innerHTML = ulInner;
+
         if (instructionFieldValue.length > 0) {
             instructionListEl.appendChild(instructionUlEl);
         }
-    }
+
     document.querySelector('#new-receipe-instruction').value = ""
+
+
+    // editing/deleting elements in new recipes
+
+    const removeButton = document.querySelectorAll('.add-receipe-details .far.fa-trash-alt');
+    const editButton = document.querySelectorAll('.add-receipe-details .far.fa-edit');
+
+    removeButton.forEach(function (element) {
+        element.addEventListener('click', function (event) {
+            const ulEl = this.parentElement.parentElement;
+            ulEl.parentElement.removeChild(ulEl);
+        });
+    });
+
 });
 
 
@@ -106,7 +108,45 @@ addDescriptionButton.addEventListener('click', function (event) {
         descriptionList.appendChild(newLiEl);
     }
     document.querySelector('#new-receipe-ingredient').value = ""
+    // editing/deleting elements in new recipes
+
+    const removeButton = document.querySelectorAll('.add-receipe-details .far.fa-trash-alt');
+    const editButton = document.querySelectorAll('.add-receipe-details .far.fa-edit');
+
+    removeButton.forEach(function (element) {
+        element.addEventListener('click', function (event) {
+            const liEl = this.parentElement;
+            liEl.parentElement.removeChild(liEl);
+            basket.parentElement.parentElement.removeChild('li');
+            console.log(basket.parentElement.parentElement.parentElement);
+
+        });
+    });
 });
 
 // editing/deleting elements in new recipes
+
+const removeButton = document.querySelectorAll('.add-receipe-details .far.fa-trash-alt');
+const editButton = document.querySelectorAll('.add-receipe-details .far.fa-edit');
+
+removeButton.forEach(function (element) {
+    element.addEventListener('click', function (event) {
+        const basket = this;
+        console.log(this);
+        basket.parentElement.parentElement.removeChild('li');
+        console.log(basket.parentElement.parentElement.parentElement);
+
+    });
+});
+
+// correct list numbers in instructions
+
+document.querySelector('.recipe-instruction').addEventListener('click', function () {
+    const allLiCounters = document.querySelectorAll('#recipeCounter');
+    let counter = 1;
+    allLiCounters.forEach(function (element) {
+        element.innerText = counter + '.';
+        counter++;
+    })
+});
 

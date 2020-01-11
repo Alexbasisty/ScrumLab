@@ -170,10 +170,13 @@
 
 .far.fa-trash-alt {
     color: $basket-icon;
+    cursor: pointer;
+
 }
 .fa-plus-square.add-recipe {
     color: $success-message;
     font-size: 2rem;
+    cursor: pointer;
 }
 .hidden {
     display: none;
