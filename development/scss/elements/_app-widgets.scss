@@ -44,10 +44,10 @@ body{
                     i {
                         font-size: 5rem;
                         color: $success-message;
-                        color: $success-message;
                     }
 
                     }
+                    
 
                     p{
                         font-size: 1.3rem;
@@ -63,6 +63,7 @@ body{
 
             }
 
+            
             .right-side{
                 // border: 1px solid blueviolet;
                 width: calc(100vw - 820px);
@@ -128,7 +129,7 @@ body{
                     
                     p{
                         color: $info-message;
-                        padding: 3px auto; 
+                        padding: 3px 0; 
                     }
                     .cross{
                         background-color: $info-message;

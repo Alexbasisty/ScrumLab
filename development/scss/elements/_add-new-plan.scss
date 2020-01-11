@@ -12,22 +12,75 @@
     padding-top: 50px;
 
     .top-bar {
-        width: 100%;
+        width: 90%;
         font-weight: 600;
-        border-top: 1px solid lightgray;
-        border-bottom: 1px solid lightgray;
+        
+        border-bottom: 1px solid $tables_and-icons;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         
-
+        
         .title{
             text-transform: uppercase;
             font-family: $text-font;
             color: $buttons_screen-headers;
             font-size: 2rem;
+            
+        }
+        button.submit{
+            
+            color: white;
+            font-size: 1.5rem;
+            font-family: $text-font;
+            font-weight: 600;
+            background-color: $buttons_screen-headers;
+            padding: 4px 8px;
+            border: none;
+            margin-bottom: 8px;
         }
 
+    }
+
+    .plan-form{
+        display: flex;
+        flex-direction: column;
+        
+        width: 90%;
+        height: 400px;
+        padding:20px 50px;
+
+        div{
+            width: 100%;
+            // border: 1px solid green;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        label{
+            font-size: 1.8rem;
+            color: $tables_and-icons;
+            
+        }
+        input{
+            width: 70%;
+            height: 25px;
+            padding: 0 10px;
+
+        }
+
+        input.plan-description{
+            height: 100px;
+            // zaczyna pisać od środka!!
+            
+        }
+
+        input.plan-week-number{
+            width: 1%;
+            padding-left: 0px;
+        }
     }
 }
