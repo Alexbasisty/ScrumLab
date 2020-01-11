@@ -62,10 +62,10 @@
         flex-direction: column;
         
         width: 90%;
-        height: 400px;
+        height: 300px;
         padding:20px 50px;
-        border: 1px solid green;
-        //border-bottom: 1px solid $tables_and-icons;
+        // border: 1px solid green;
+        
 
         div{
             width: 100%;
@@ -98,6 +98,7 @@
             width: 1%;
             padding-left: 0px;
             // to ma być po lewej
+            border-bottom: 1px solid $tables_and-icons;
         }
     }
 
@@ -106,7 +107,7 @@
     .grid{
         width: 95%;
         margin: 0 auto;
-        height: 500px;
+        height: 450px;
       
         // właściwości wiersza
         .row{
@@ -117,7 +118,7 @@
             float: left;
             min-height: 10px;
             box-sizing: border-box;
-            border: 1px solid gray;
+            padding: 2px;
           }
           //mixin na szerokość komórki w zależności od nadanej cyfry w nazwie
           @for $i from 1 through 6 {
@@ -129,15 +130,12 @@
       }
     .week-schedule-select{
 
-        border: 1px solid blue;
-    
+        // border: 1px solid blue;
+        text-align: center;
+        
 
         ul{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            
+            border-bottom: 1px solid $tables_and-icons;
         }
 
         ul.meals{
@@ -147,14 +145,19 @@
             text-align: center;
         }
 
-        select.meal{
-            width: 150px;
-            height: 30px;
-        }
-
         li{
-            margin: 5px 10px;
-            width:200;
+        
+            margin:7px 0;
+
+            select.meal{
+                width: 60px;
+                height: 30px;
+
+
+                option{
+                    width: 60px;
+                }
+            }
         }
         li.day{
             font-size: 1.2rem;
