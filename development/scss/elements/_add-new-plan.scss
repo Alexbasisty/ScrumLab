@@ -51,9 +51,11 @@
         height: 400px;
         padding:20px 50px;
 
+        //border-bottom: 1px solid $tables_and-icons;
+
         div{
             width: 100%;
-            // border: 1px solid green;
+            border: 1px solid green;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -81,6 +83,47 @@
         input.plan-week-number{
             width: 1%;
             padding-left: 0px;
+            // to ma być po lewej
         }
     }
+
+    //sekcja z tabelą
+
+    .week-schedule-select{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border: 1px solid blue;
+        width: 90%;
+        height: 500px;
+
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            
+        }
+
+        ul.meals{
+            font-size: 1.3rem;
+            color: $nav-side-panel;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        select.meal{
+            width: 150px;
+            height: 30px;
+        }
+
+        li{
+            margin: 5px 10px;
+            width:200;
+        }
+
+    }
+
+
 }
