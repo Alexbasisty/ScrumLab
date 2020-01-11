@@ -38,6 +38,7 @@ const saveCloseButton = document.querySelector('button.save-close');
 const addInstructionsButton = document.querySelector('.recipe-instruction .add-recipe');
 const addDescriptionButton = document.querySelector('.recipe-description .add-recipe');
 const instructionListEl = document.querySelector('.instruction-list');
+const descriptionList = document.querySelector('.description-list ul');
 
 
 
@@ -61,11 +62,7 @@ class Recipe{
 }
 
 addInstructionsButton.addEventListener('click', function () {
-    const instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
-
-    const newRecipe = new Recipe();
-    newRecipe.instruction = instructionFieldValue;
-    localStorage.setItem('recipe', JSON.stringify(newRecipe));
+    let instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
 
     if (instructionListEl.hasChildNodes() === true) {
         const recipeCounter = parseInt(instructionListEl.lastElementChild.firstElementChild.innerText);
@@ -74,23 +71,42 @@ addInstructionsButton.addEventListener('click', function () {
         const ulInner = `
               <li>${recipeCounter + 1}.</li>
               <li>${instructionFieldValue}.<i class=\"far fa-edit\"></i><i class=\"far fa-trash-alt\"></i></li>
-`;
+         `;
         instructionUlEl.innerHTML = ulInner;
-        instructionListEl.appendChild(instructionUlEl);
+        if (instructionFieldValue.length > 0) {
+            instructionListEl.appendChild(instructionUlEl);
+        }
     } else {
         const instructionUlEl = document.createElement('ul');
         const recipeCounter = 1;
         const ulInner = `
               <li>${recipeCounter}.</li>
-              <li>${instructionFieldValue}.<i class=\"far fa-edit\"></i><i class=\"far fa-trash-alt\"></i></li>
-`;
+              <li>${instructionFieldValue}.<i class="far fa-edit"></i><i class="far fa-trash-alt"></i></li>
+         `;
         instructionUlEl.innerHTML = ulInner;
-        instructionListEl.appendChild(instructionUlEl);
-        console.log(instructionFieldValue);
+        if (instructionFieldValue.length > 0) {
+            instructionListEl.appendChild(instructionUlEl);
+        }
     }
+    document.querySelector('#new-receipe-instruction').value = ""
 });
 
+
 addDescriptionButton.addEventListener('click', function (event) {
-    const descriptionFieldValue = document.querySelector('#new-receipe-ingredient').value;
-    console.log(descriptionFieldValue);
+    let descriptionFieldValue = document.querySelector('#new-receipe-ingredient').value;
+
+    const newElInner = `
+    ${descriptionFieldValue}
+        <i class="far fa-edit"></i>
+        <i class="far fa-trash-alt"></i>
+    `;
+    const newLiEl = document.createElement('li');
+    newLiEl.innerHTML = newElInner;
+    if(descriptionFieldValue.length > 0) {
+        descriptionList.appendChild(newLiEl);
+    }
+    document.querySelector('#new-receipe-ingredient').value = ""
 });
+
+// editing/deleting elements in new recipes
+
