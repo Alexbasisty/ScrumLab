@@ -11,12 +11,12 @@
     text-align: left;
 
     .container {
-      padding: 30px;
-}
+        padding: 30px;
+    }
 }
 
 .add-receipe-header {
-	display: flex;
+    display: flex;
     justify-content: space-between;
     border-bottom: 2px solid lightgray;
     h1 {
@@ -25,7 +25,7 @@
         text-align: left;
         color: $buttons_screen-headers;
 
-      }
+    }
     button {
         padding: 6px 10px;
         border: none;
@@ -38,7 +38,7 @@
 }
 
 .add-receipe-overall-form {
-	display: flex;
+    display: flex;
     padding: 0.5em;
 
     label {
@@ -67,6 +67,15 @@
 .add-receipe-details {
     display: flex;
     flex-direction: row;
+    margin-top: 30px;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        border-bottom: 1px solid $tables_and-icons;
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+    }
 
     .recipe-instruction {
         width: 45%; margin-right: 20px;
@@ -74,24 +83,28 @@
 
     .instruction-list {
         overflow-y: scroll;
+        height: 198px;
     }
     ul {
         display: flex;
     }
 
-.recipe-instruction {
+    .recipe-instruction {
 
 
-    span {
-        height: 10em;
+        span {
+            height: 10em;
+        }
+        input {
+            width: 30vw;
+        }
     }
-    input {
-        width: 30vw;
-    }
-}
     .recipe-description {
+
+
         .description-list {
             overflow-y: scroll;
+            height: 198px;
 
             ul {
                 display: flex;
