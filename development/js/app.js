@@ -49,6 +49,13 @@ saveCloseButton.addEventListener('click', function (event) {
     addRecipeSection.classList.toggle('hidden');
 });
 
+const recipe = {
+    name: "value1",
+    description: "value2",
+    instruction: "value3"
+};
+
+
 addInstructionsButton.addEventListener('click', function () {
     const instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
     console.log(instructionFieldValue);
