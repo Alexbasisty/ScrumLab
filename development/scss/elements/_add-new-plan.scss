@@ -1,4 +1,18 @@
 
+
+//clearfix do grida
+
+@mixin clearfix{
+    &::before,
+    &::after{
+      content: "";
+      display:table;
+      clear: both;
+      
+    }
+  }
+
+// kod 
 .add-new-plan{
     width: calc(100vw - 336px);
     height: calc(100vh - 155px);
@@ -50,12 +64,12 @@
         width: 90%;
         height: 400px;
         padding:20px 50px;
-
+        border: 1px solid green;
         //border-bottom: 1px solid $tables_and-icons;
 
         div{
             width: 100%;
-            border: 1px solid green;
+            
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -89,14 +103,34 @@
 
     //sekcja z tabelą
 
-    .week-schedule-select{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        border: 1px solid blue;
-        width: 90%;
+    .grid{
+        width: 95%;
+        margin: 0 auto;
         height: 500px;
+      
+        // właściwości wiersza
+        .row{
+          @include clearfix;
+          margin: 10px auto;
+          // wlaściwości komórki
+          [class*='col-']{
+            float: left;
+            min-height: 10px;
+            box-sizing: border-box;
+            border: 1px solid gray;
+          }
+          //mixin na szerokość komórki w zależności od nadanej cyfry w nazwie
+          @for $i from 1 through 6 {
+            .col-#{$i} {
+              width: (100%/6) * $i;
+            }
+          }
+        }
+      }
+    .week-schedule-select{
+
+        border: 1px solid blue;
+    
 
         ul{
             display: flex;
@@ -121,6 +155,10 @@
         li{
             margin: 5px 10px;
             width:200;
+        }
+        li.day{
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
     }
