@@ -1,8 +1,4 @@
-@mixin display_flex($color, $font-size) {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+@mixin font_style($color, $font-size) {
   font-size: $font-size;
   color: $color;
   border-bottom: 1px solid $tables_and-icons;
@@ -21,50 +17,60 @@
   align-items: center;
   background-color: $background-screen;
   border: 1px dashed $tables_and-icons;
+  margin: 30px 0;
 
   h4 {
     color: $buttons_screen-headers;
     text-align: center;
     font-size: 1.3rem;
-    height: 35px;
+    height: 40px;
     line-height: 35px;
-  }
-
-  .week-days {
-    @include display_flex($nav-side-panel, 1.5rem);
-    height: 50px;
-    width: 95%;
-    border-top: 1px solid $tables_and-icons;
+    font-weight: 600;
   }
   .meals-plan, .grid {
-    width: 94%;
-    margin: 0 auto;
-    .row {
-      @include clearfix;
+     width: 95%;
+     margin: 0 auto;
 
-      [class*="col-"] {
-        float: left;
-        min-height: 50px;
-      }
+     .row {
+       @include clearfix;
 
-      @for $i from 1 through 7 {
-        .col-#{$i} {
-          width: (100%/7) * $i;
-        }
-      }
+       [class*="col-"] {
+         float: left;
+         min-height: 50px;
+       }
 
-    }
+       @for $i from 1 through 7 {
+         .col-#{$i} {
+           width: (100%/7) * $i;
+         }
+       }
+     }
 
-    .breakfast, .second-breakfast, .soup, .main_course, .supper {
-      @include display_flex($tables_and-icons, 1.3rem);
-    }
-    .breakfast, .soup, .supper {
-      line-height: 50px;
-    }
-    .second-breakfast, .main_course {
-      height: 75px;
-    }
+     .week-days {
+       font-size: 1.5rem;
+       color: $nav-side-panel;
+       font-weight: 600;
+       line-height: 50px;
+       border-bottom: 1px solid $tables_and-icons;
+       border-top: 1px solid $tables_and-icons;
+     }
+
+     .breakfast, .second-breakfast, .soup, .main_course, .supper {
+       @include font_style($tables_and-icons, 1.3rem);
+     }
+
+     .breakfast, .soup, .supper {
+       line-height: 50px;
+     }
+
+     .second-breakfast, .main_course {
+       height: 75px;
+       display: flex;
+       align-items: center;
+     }
   }
+
+
   .week-plan-buttons {
     width: 100%;
     height: 45px;
@@ -72,11 +78,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+
     .week-plan-btn {
       border: none;
       color: $buttons_screen-headers;
       background-color: $background-screen;
       font-size: 0.9rem;
+      margin: 5px;
+
     }
   }
 }
