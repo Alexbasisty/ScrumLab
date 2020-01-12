@@ -140,8 +140,8 @@ saveCloseButton.addEventListener('click',function () {
     const nameRecipeValue = document.querySelector('#new-receipe-name').value;
     const descriptionFieldValue = document.querySelector('#new-receipe-description').value;
     const allRecipesDivEl = document.querySelector('.all-recipes');
-
     const recipe = new Recipe(nameRecipeValue, descriptionFieldValue);
+
     localStorage.setItem('recipe', JSON.stringify(recipe));
     const newUl = document.createElement('ul');
     newUl.classList.add('recipe');
@@ -150,7 +150,7 @@ saveCloseButton.addEventListener('click',function () {
 
     const newUlElments = `                             
                     <li>1</li>
-                    <li>$recipeFromLS.name}</li>
+                    <li>${recipeFromLS.name}</li>
                     <li>${recipeFromLS.description}</li>
                     <li>
                         <i class="far fa-edit edit-recipe"></i>
