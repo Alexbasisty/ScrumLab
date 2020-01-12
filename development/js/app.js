@@ -39,7 +39,14 @@ const addInstructionsButton = document.querySelector('.recipe-instruction .add-r
 const addDescriptionButton = document.querySelector('.recipe-description .add-recipe');
 const instructionListEl = document.querySelector('.instruction-list');
 const descriptionList = document.querySelector('.description-list ul');
-
+function correctLiNumber() {
+    const allLiCounters = document.querySelectorAll('#recipeCounter');
+    let counter = 1;
+    allLiCounters.forEach(function (element) {
+        element.innerText = counter;
+        counter++;
+    })
+}
 
 
 
@@ -128,6 +135,7 @@ document.querySelector('.recipe-instruction').addEventListener('click', function
     })
 });
 
+
 saveCloseButton.addEventListener('click',function () {
     class Recipe{
         constructor(name, description, instruction, ingredients){
@@ -149,7 +157,7 @@ saveCloseButton.addEventListener('click',function () {
     const recipeFromLS = JSON.parse(localStorage.recipe);
 
     const newUlElments = `                             
-                    <li>1</li>
+                    <li id="recipeCounter">1</li>
                     <li>${recipeFromLS.name}</li>
                     <li>${recipeFromLS.description}</li>
                     <li>
@@ -164,5 +172,9 @@ saveCloseButton.addEventListener('click',function () {
     newUl.innerHTML = newUlElments;
     allRecipesDivEl.appendChild(newUl);
 
+    // correct recipe numbers in list
+
+    document.querySelector('.list-of-recipes').addEventListener('click', correctLiNumber);
+    saveCloseButton.addEventListener('click', correctLiNumber);
 });
 
