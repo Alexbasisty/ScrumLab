@@ -7,36 +7,159 @@ body{
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
+        box-sizing: border-box;
 
         .widgets{
+            
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid pink;
+            // border: 1px solid pink;
 
             width: calc(100vw - 336px);
             height: 200px ;
 
 
             .left-side{
+
                 display: flex;
                 flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                // border: 1px solid blue;
 
-                border: 1px solid blue;
+                .add-recipe, .add-plan{
+                    border: 1px dashed $success-message;
+                    width: 220px;
+                    height: 200px;
+                    margin:10px;
+                    background-color: $background-screen;
 
-                .add-recipe{
-                    border: 1px dashed $success-message;
-                }
-                .add-plan
-                {
-                    border: 1px dashed $success-message;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    i {
+                        font-size: 5rem;
+                        color: $success-message;
+                    }
+
+                    }
+                    
+
+                    p{
+                        font-size: 1.3rem;
+                        color: $success-message;
+                        margin-top: 1.5rem;
+                        font-weight: 600;
+                    }
+
+                    .add-recipe{
+                        margin-left: 0;
+                    }
                 }
 
             }
 
+            
             .right-side{
-                border: 1px solid blueviolet;
+                // border: 1px solid blueviolet;
+                width: calc(100vw - 820px);
+                margin-left: 10px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                margin-right: 0;
+
+                .notification{
+                    border:1px dashed grey;
+                    width: 100%;
+                    height: 55px;
+                    background-color: $background-screen;
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                    
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin:auto;
+                    position: relative;
+
+                    i{
+                        font-size: 2.5rem;
+                        display: block;
+                        margin-left: 10px;
+                    }
+
+                    p{
+                       position: absolute;
+                       left:8%;
+                       top:-10%;
+                    }
+                    div{
+                        
+                        border: none;
+                        border-radius: 2px;
+                        position: absolute;
+                        right: 1%;
+                        top: 10%;
+                        width: 22px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+
+                    }
+                    i.fa-times{
+                        margin: 1px 5px;
+                        font-size: 1rem;
+                        color: $background-screen;
+                    }
+                }
+
+                .info{
+                    border: 1px dashed $info-message;
+                    color: $info-message;
+                    margin-bottom: 5px;
+                    margin-top: 0;
+                    
+                    p{
+                        color: $info-message;
+                        padding: 3px 0; 
+                    }
+                    .cross{
+                        background-color: $info-message;
+                    }
+                    
+                }
+                .orange{
+                    border: 1px dashed $warning-message;
+                    color: $warning-message;
+                    margin: 5px auto;
+
+                    p{
+                        color: $warning-message;
+                    }
+                    .cross{
+                        background-color: $warning-message;
+                    }
+                }
+                .gratulation{
+                    border: 1px dashed $success-message;
+                    color: $success-message;
+                    margin-top: 10px;
+
+                    p{
+                        color: $success-message;
+                    }
+                    .cross{
+                        background-color: $success-message;
+                    }
+                }
 
             }
         }
@@ -44,4 +167,3 @@ body{
 
     }
 
-}
