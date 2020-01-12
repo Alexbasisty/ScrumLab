@@ -50,43 +50,106 @@
       </div>
     </section> -->
 
-    <section class="pulpit">
-      <div class="pulpit">
+        <section class="pulpit">
+          <div class="pulpit">
 
-        <div class="widgets">
-          <div class="left-side">
-            <div class="add-recipe">
-              <i class="fa fa-plus-square-o"></i>
-              <p>dodaj przepis</p>
-            </div>
-            <div class="add-plan">
-              <i class="fa fa-plus-square-o"></i>
-              <p>dodaj plan</p>
-          </div>
-          <div class="right-side notifications">
-            <div class="info notification">
-              <i class="fa fa-info-circle"></i>
-               <p>Masz już <span class="number-of-plans">99</span> przepisów, nieźle!</p>
-               <div class="cross"><i class="fa fa-times"></i></div>
-            </div>
-            <div class="orange notification"> 
-              <i class="fa fa-exclamation-circle" ></i>
- 
-              <p>Pamiętaj, żeby dodać plan!</p>
-              <div class="cross"><i class="fa fa-times"></i></div>
-            </div>
-            <div class="gratulation notification"> 
-              <i class="fa fa-check-circle"> </i fa-check-circle"> 
-              <p>Świetnie, że jesteś! Udanego planowania i smacznego! </p>
-              <div class="cross"><i class="fa fa-times"></i></div>
-            </div>
-          </div>
-        </div>
+            <div class="widgets">
+              <div class="left-side">
+                <div class="add-recipe">
+                  <i class="fa fa-plus-square-o"></i>
+                  <p>dodaj przepis</p>
+                </div>
+                <div class="add-plan">
+                  <i class="fa fa-plus-square-o"></i>
+                  <p>dodaj plan</p>
+                </div>
+              <div class="right-side notifications">
+                <div class="info notification">
+                  <i class="fa fa-info-circle"></i>
+                   <p>Masz już <span class="number-of-plans">99</span> przepisów, nieźle!</p>
+                   <div class="cross"><i class="fa fa-times"></i></div>
+                </div>
+                <div class="orange notification">
+                  <i class="fa fa-exclamation-circle" ></i>
 
-        <!-- miejsce na plan tygodnia -->
-        <div class="week-plan"></div>
-      </div>
-    </section>  
+                  <p>Pamiętaj, żeby dodać plan!</p>
+                  <div class="cross"><i class="fa fa-times"></i></div>
+                </div>
+                <div class="gratulation notification">
+                  <i class="fa fa-check-circle"> </i>
+                  <p>Świetnie, że jesteś! Udanego planowania i smacznego! </p>
+                  <div class="cross"><i class="fa fa-times"></i></div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            <!-- miejsce na plan tygodnia -->
+            <div class="week-plan">
+              <h4>Twój plan na {nr_tygodnia} tydzień</h4>
+                <div class="grid meals-plan">
+                    <div class="row week-days">
+                        <p class="col-1">Poniedziałek</p>
+                        <p class="col-1">Wtorek</p>
+                        <p class="col-1">Środa</p>
+                        <p class="col-1">Czwartek</p>
+                        <p class="col-1">Piątek</p>
+                        <p class="col-1">Sobota</p>
+                        <p class="col-1">Niedziela</p>
+                    </div>
+                    <div class="row breakfast">
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                        <p class="col-1">śniadanie</p>
+                    </div>
+                    <div class="row second-breakfast">
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                        <p class="col-1">drugie<br>śniadanie</p>
+                    </div>
+                    <div class="row soup">
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                        <p class="col-1">zupa</p>
+                    </div>
+                    <div class="row main_course">
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                        <p class="col-1">drugie<br>danie</p>
+                    </div>
+                    <div class="row supper">
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                        <p class="col-1">kolacja</p>
+                    </div>
+                </div>
+                <div class="week-plan-buttons">
+                    <button class="week-plan-btn"><i class="fas fa-angle-double-left"></i> poprzedni</button>
+                    <button class="week-plan-btn">następny <i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+          </div>
+        </section>
 
     <section class="plans"></section>
     </main>
