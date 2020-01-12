@@ -39,6 +39,8 @@ const addInstructionsButton = document.querySelector('.recipe-instruction .add-r
 const addDescriptionButton = document.querySelector('.recipe-description .add-recipe');
 const instructionListEl = document.querySelector('.instruction-list');
 const descriptionList = document.querySelector('.description-list ul');
+let counter = 0;
+
 function correctLiNumber() {
     const allLiCounters = document.querySelectorAll('#recipeCounter');
     let counter = 1;
@@ -135,6 +137,9 @@ document.querySelector('.recipe-instruction').addEventListener('click', function
     })
 });
 
+//  ******************************
+//  new recipe to the list
+// ***********************************
 
 saveCloseButton.addEventListener('click',function () {
     class Recipe{
@@ -150,13 +155,19 @@ saveCloseButton.addEventListener('click',function () {
     const allRecipesDivEl = document.querySelector('.all-recipes');
     const recipe = new Recipe(nameRecipeValue, descriptionFieldValue);
 
-    localStorage.setItem('recipe', JSON.stringify(recipe));
-    const newUl = document.createElement('ul');
-    newUl.classList.add('recipe');
 
-    const recipeFromLS = JSON.parse(localStorage.recipe);
+ if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0) {
+     let recipeKey = 'recipe' + counter;
+     console.log(recipeKey);
+     console.log(counter);
 
-    const newUlElments = `                             
+     localStorage.setItem(recipeKey, JSON.stringify(recipe));
+     const newUl = document.createElement('ul');
+     newUl.classList.add('recipe');
+
+     const recipeFromLS = JSON.parse(localStorage['recipe' + counter]);
+
+     const newUlElments = `                             
                     <li id="recipeCounter">1</li>
                     <li>${recipeFromLS.name}</li>
                     <li>${recipeFromLS.description}</li>
@@ -169,9 +180,12 @@ saveCloseButton.addEventListener('click',function () {
                         <i class="fas fa-print"></i>
                     </li>
          `;
-    newUl.innerHTML = newUlElments;
-    allRecipesDivEl.appendChild(newUl);
-
+     newUl.innerHTML = newUlElments;
+     allRecipesDivEl.appendChild(newUl);
+     counter++;
+     document.querySelector('#new-receipe-name').value = ""
+     document.querySelector('#new-receipe-description').value = ""
+ }
     // correct recipe numbers in list
 
     document.querySelector('.list-of-recipes').addEventListener('click', correctLiNumber);
