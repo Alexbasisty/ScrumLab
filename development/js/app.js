@@ -40,25 +40,17 @@ const instructionListEl = document.querySelector('.instruction-list');
 const descriptionList = document.querySelector('.description-list ul');
 let counter = 0;
 let allRecipes = [];
-
-    if (localStorage.getItem("recipe") !== "null") {
-        JSON.parse(localStorage.recipe).forEach(function (element) {
-            allRecipes.push(element);
-        })
+    function fillArrWithRecipes () {
+        if (localStorage.getItem("recipe") !== null) {
+            const everyObject = JSON.parse(localStorage.recipe);
+            everyObject.forEach(function (element) {
+                allRecipes.push(element);
+            })
+        } else {
+            allRecipes = [];
+        }
     }
-
-
-
-function correctLiNumber() {
-    const allLiCounters = document.querySelectorAll('#recipeCounter');
-    let counter = 1;
-    allLiCounters.forEach(function (element) {
-        element.innerText = counter;
-        counter++;
-    })
-}
-
-
+fillArrWithRecipes();
 
 addRecipeButton.addEventListener('click', function (event) {
         listRecipesSection.style.display = 'none';
@@ -179,7 +171,7 @@ saveCloseButton.addEventListener('click',function () {
      newUl.classList.add('recipe');
 
      newUl.innerHTML = `
-                    <li id="recipeCounter">1</li>
+                    <li id="recipeCounter">${recipeKey.id}</li>
                     <li>${recipeKey.title}</li>
                     <li>${recipeKey.description}</li>
                     <li>
@@ -197,13 +189,10 @@ saveCloseButton.addEventListener('click',function () {
      document.querySelector('#new-receipe-name').value = "";
      document.querySelector('#new-receipe-description').value = ""
  }
-    // correct recipe numbers in list
 
-    document.querySelector('.list-of-recipes').addEventListener('click', correctLiNumber);
-    saveCloseButton.addEventListener('click', correctLiNumber);
 });
 function loadRecipesList() {
-    if (localStorage.getItem("recipe") !== "null") {
+    if (localStorage.getItem("recipe") !== null) {
         const recipeObjects = JSON.parse(localStorage.recipe);
         recipeObjects.forEach(function (element) {
             const newUl = document.createElement('ul');
@@ -211,7 +200,7 @@ function loadRecipesList() {
             const allRecipesDivEl = document.querySelector('.all-recipes');
 
             newUl.innerHTML = `
-                    <li id="recipeCounter">1</li>
+                    <li id="recipeCounter">${element.id}</li>
                     <li>${element.title}</li>
                     <li>${element.description}</li>
                     <li>
@@ -228,7 +217,6 @@ function loadRecipesList() {
         }
 }
 loadRecipesList();
-correctLiNumber();
 
 /*
  **********************************************************************
