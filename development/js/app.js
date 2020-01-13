@@ -27,3 +27,24 @@ if (formEl !== null) {
 
 loadPage();
 
+
+///////////////////////////////// add new plan 6.2
+
+//zmienne:
+
+//sekcja z formularzem dla nowego planu:
+const addNewPlanSection = document.querySelector('section.add-new-plan');
+
+//button dodawania nowego planu na pulpicie(zielony krzyżyk):
+const buttonAddNewPlan = document.querySelector('.widgets .add-plan');
+
+// sekcja pulpitu
+const pulpit = document.querySelector('section.pulpit');
+
+
+// eventListener na button-> pokaże okno dodaj nowy plan, zamknie okno pulpit
+
+buttonAddNewPlan.addEventListener('click', function(event){
+    addNewPlanSection.style.display = 'block';
+    pulpit.style.display = 'none';
+});
