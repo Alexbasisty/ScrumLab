@@ -48,3 +48,18 @@ buttonAddNewPlan.addEventListener('click', function(event){
     addNewPlanSection.style.display = 'block';
     pulpit.style.display = 'none';
 });
+
+
+// zmienne pobierające dane z formularza:
+// nazwa planu:
+const planNameElement = document.querySelector('.plan-form input.plan-name');
+// wartość pobrana z inputa plan-name:
+const planName = planNameElement.value;
+// opis planu:
+const planDescriptionElement = document.querySelector('.plan-form input.plan-description');
+// wartość pobrana z inputa plan-description:
+const planDescription = planDescriptionElement.value;
+//numer tygdnia:
+const weekNumberElement = document.querySelector('.plan-form .plan-week-number');
+//wartość pobrana z numeru tygodnia:
+const weekNumber = weekNumberElement.value;
