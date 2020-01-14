@@ -83,7 +83,7 @@ let allSelectElements = document.querySelectorAll('.week-schedule-select ul li s
 
 
 
-//event do buttona będzie zawierał funkcje pisane niżej
+//event do buttona będzie zawierał funkcje pisane niżej, tylko jeśli HTML z pulpitem jest widoczny
 
 if(pulpit !== null){ 
     buttonSubmitSaveAndClose.addEventListener('click', function(event){
@@ -105,7 +105,12 @@ if(pulpit !== null){
 
 // tworzę obiekt, który będzie łapał informacje z formularza dodawania nowego planu do LS
 
-
+function Plan(id, title, description, weekNumber) {
+    this.id = id; //nr porządkowy planu-wg kolejności
+    this.title = title; //nazwa planu
+    this.description = description; // opis planu
+    this.weekNumber = weekNumber;  //nr tygodnia
+};
 
 //funkcja która będzie renderować każdy nowy plan w DOM i tworzyć el. listy i dodawać je w pliku schedules
 //zmienne:
@@ -118,20 +123,16 @@ const schedulesPage = document.querySelector('.list-of-schedules');
 // jeżeli jesteśmy na stronie listy z planami -
 if(schedulesPage !== null){
     console.log("strona z listą przepisów");
-    function Plan(id, title, description, weekNumber) {
-        this.id = id; //nr porządkowy planu-wg kolejności
-        this.title = title; //nazwa planu
-        this.description = description; // opis planu
-        this.weekNumber = weekNumber;  //nr tygodnia
-    };
+
     //przyykładowy obiekt:
-    const dzien1 = new Plan(1, "tytul", "opisPLanu", "tydzien3");
+    let dzien1 = new Plan(1, "tytul", "opisPLanu", "tydzien3");
+    console.log(dzien1.description)
     renderPlanElement(dzien1);
-}
+};
 
 
 //funckja, która dodaje do Drzewa DOM nowy element listy z danymi nowego planu
-function renderPlanElement(){
+function renderPlanElement(plan){
     console.log('działam')
     //tworzę nowy element UL:
     const newUl = document.createElement('ul');
@@ -139,10 +140,10 @@ function renderPlanElement(){
     //ustawiam mu wewnętrny html, żeby się nie nadoawać elementów:
     newUl.innerHTML = `
     
-        <li>${Plan.id}</li>
-        <li>${Plan.title}</li>
-        <li>${Plan.description}</li>
-        <li>${Plan.weekNumber}</li>
+        <li>${plan.id}</li>
+        <li>${plan.title}</li>
+        <li>${plan.description}</li>
+        <li>${plan.weekNumber}</li>
         <li>
             <i class="far fa-edit edit-recipe edit-schedule"></i>
             <i class="far fa-trash-alt delete-recipe delete-schedule"></i>
