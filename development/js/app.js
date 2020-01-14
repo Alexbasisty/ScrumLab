@@ -90,7 +90,7 @@ if(pulpit !== null){
     
         //jeżeli w localstorage znajdują się przepisy (lub na liście, muszę sprawdzić)
         
-    
+        addInputValueToLS();
     
     
         // na sam koniec zmieniamy display- ukrywamy add-plan-form a pokazujemy pulpit
@@ -128,6 +128,10 @@ if(schedulesPage !== null){
     let dzien1 = new Plan(1, "tytul", "opisPLanu", "tydzien3");
     console.log(dzien1.description)
     renderPlanElement(dzien1);
+
+
+
+
 };
 
 
@@ -161,4 +165,32 @@ function renderPlanElement(plan){
 
 
 
+
+// funkcja, która pobiera wartości wpisane do inputów i przekazuje je do LS:
+//zmienne:
+//input z nazwą planu
+const inputElementPlanName = document.querySelector('input.plan-name');
+//input z opisem planu:
+const inputElementPlanDescription = document.querySelector('input.plan-description');
+//input z numerem tygodnia:
+const inputElementPlanWeekNumber = document.querySelector('input.plan-week-number');
+
+//funkcja:
+function addInputValueToLS(){
+    //zmienne, które wypiszą waartości wpisane w inputy:
+    const inputPlanNameValue = inputElementPlanName.value;
+    console.log(inputPlanNameValue);
+    const inputPlanDescriptionValue = inputElementPlanDescription.value;
+    console.log(inputPlanDescriptionValue);
+    const inputPlanWeekValue = inputElementPlanWeekNumber.value;
+    console.log(inputPlanWeekValue);
+
+    //dodaję wartości do obiektu Plan:
+    
+
+
+
+}
+
+// sprawdzenie pobierania danych z formularza add new plan --linia 93 w addEventListener do buttona zamykającego sekcję
 
