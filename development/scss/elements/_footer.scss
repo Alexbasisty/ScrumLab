@@ -64,38 +64,41 @@
 		}
 	}
 
-	.footer-links {
-
+	.footer-links{
+		
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
 		margin-top: 2rem;
-
+	
 		a {
 			clear: left;
 			margin: 1em;
 			font-size: 1rem;
 		}
+	
 
-
-		a {
-			clear: left;
-			margin: 1em;
+	a {
+		clear: left;
+		margin: 1em;
 
 			&:first-of-type {
 				margin-left: 0;
 			}
-    
+
     }
-  
+
   }
 }
 
+<<<<<<< HEAD
 
 	
 
 
+=======
+>>>>>>> remotes/origin/feature/4.2-testing_new_options
 .copywright {
     text-align: center;
     background-color: $header_column-text;
@@ -107,4 +110,5 @@
 		text-decoration: none;
 	}
 }
+
 
