@@ -125,6 +125,42 @@ addDescriptionButton.addEventListener('click', function (event) {
 
 });
 
+//------------------------------------------
+//editing
+
+const removeButton = document.querySelectorAll('#instr-basket');
+const editButton = document.querySelectorAll('#instr-edit-button');
+
+editButton.forEach(function (element){
+    element.addEventListener('click', function (event) {
+        event.preventDefault();
+        const liEl = this.parentElement;
+        const ulEl = liEl.parentElement;
+        ulEl.toggleClass("editable");
+
+        if (ulEl.classList.contains('editable')) {
+            let liText = liEl.innerText;
+            ulEl.childNodes.replaceWith(`
+                <input value="${liText}">
+            `)
+        } else {
+            let liText = liEl.innerText;
+            ulEl.childNodes.replaceWith(`
+            <li>${liText}<i class="far fa-edit"></i>
+            <i class="far fa-trash-alt"></i></li>
+            `)
+        }
+
+    //     if (liText.length > 0) {
+    //         // recipe.description = liText;?
+    //         localStorage.setItem("description", liText);
+    //     }
+    // })
+
+    //czy będzie jakiś button do zapisywania zmian?
+
+})
+//------------------------------------------
 // correct list numbers in instructions
 
 document.querySelector('.recipe-instruction').addEventListener('click', function () {
