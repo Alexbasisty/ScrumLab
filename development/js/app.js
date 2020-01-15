@@ -176,7 +176,7 @@ function addNewPlan(){
     
     let inputPlanWeekValue = inputElementPlanWeekNumber.value;
     
-
+    let dataFromLS = [];
     //dodaję wartości do obiektu Plan:
     if((inputPlanNameValue.length <= 50) &&  (inputPlanDescriptionValue.length <= 360) && (inputPlanWeekValue < 52  && inputPlanWeekValue >0)){
        
@@ -184,13 +184,35 @@ function addNewPlan(){
         //dodaję wartości do nowego obiektu PLAN:
         const planKey = new Plan(allPlans.length +1 , inputPlanNameValue, inputPlanDescriptionValue,inputPlanWeekValue);
         //dodaję do array z planami
-        allPlans.push(planKey);
+        // allPlans.push(planKey);
         
-        // dodaje obiekt do LS:
-        localStorage.setItem("plan", JSON.stringify(allPlans));
-        
+        // // dodaje obiekt do LS:
+        // localStorage.setItem("plan", JSON.stringify(allPlans));
+        // //kiedy zamieniam wartość allPlans na planKey, sypie się reszta, dlaczego?
+
+        savePlanToLS(planKey);
     }
 
+}
+
+//funkcja pomocnicza zapisująca dane z input do LS //wywołana w linii 193 w funkcji addNewPlan();
+function savePlanToLS(plan){
+    //zmienna pomocnicza:
+    let dataFromLS=[];
+    //czy LS posiada dane?:
+    if(localStorage.getItem("plan")!==null){
+        //jeśli są to zapisujemy je do zmiennej:
+        dataFromLS = JSON.parse(localStorage.getItem("plan"));
+        //dodaje nowy obiekt
+        dataFromLS.push(plan);
+        //zapisuje do LS
+        localStorage.setItem("plan", JSON.stringify(dataFromLS));
+    }else{
+        //jeśli nie ma to tworze nową wartość w LS
+        dataFromLS.push(plan);
+        localStorage.setItem("plan",JSON.stringify(dataFromLS));
+    }
+    alert("plan dodany do ls")
 }
 
 
