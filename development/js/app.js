@@ -107,7 +107,7 @@ if(pulpit !== null){
 //cała reszta magii, która zadziała po naciśnięciu buttona:
 
 // tworzę obiekt, który będzie łapał informacje z formularza dodawania nowego planu do LS
-
+//f. do tworzenia obiektu
 function Plan(id, title, description, weekNumber) {
     this.id = id; //nr porządkowy planu-wg kolejności
     this.title = title; //nazwa planu
@@ -123,24 +123,10 @@ const schedulesListElement = document.querySelector(".all-schedules");
 const schedulesPage = document.querySelector('.list-of-schedules');
 
 
-// jeżeli jesteśmy na stronie listy z planami -
-if(schedulesPage !== null){
-    console.log("strona z listą przepisów");
 
-    //przyykładowy obiekt:
-    let dzien1 = new Plan(1, "tytul", "opisPLanu", "tydzien3");
-    console.log(dzien1.description)
-    renderPlanElement(dzien1);
-
-
-
-
-};
-
-
-//funckja, która dodaje do Drzewa DOM nowy element listy z danymi nowego planu
+//funckja, która dodaje do Drzewa DOM nowy element listy z danymi nowego planu: wywołuję w funkcji, która wyciąga dane z LS do strony schedules.html
 function renderPlanElement(plan){
-    console.log('działam')
+
 
     //tworzę nowy element UL:
     const newUl = document.createElement('ul');
@@ -162,29 +148,13 @@ function renderPlanElement(plan){
     </li>
     
     `;
-    //dodaję do DOM
+    //dodaję do DOM --wywołana jest w fukncji, która wyciąga potrzebne dane z LS (niżej) -getPlanFromLS
+    // a potem tamta wywołana w elemencie schedules.html
     schedulesListElement.appendChild(newUl);
 
 };
 
 
-//funkcja, która swtorzy array z listą planów:
-
-let allPlans = []; // pusty array z planami, które doda użytkownik
-
-function addPlansToArray(){
-    //jeżeli localstorage już ma jakiś plan:
-    if(localStorage.getItem("plan")!==null){
-        const everyObject = JSON.parse(localStorage.plan);
-        everyObject.forEach(function(el){
-            allPlans.push(el);
-        });
-    }else{
-        allPlans =[];
-    };
-
-    //wywołanie funckji w przycisku button- zapisz i zamknij linia 93
-};
 
 
 
@@ -209,13 +179,13 @@ function addNewPlan(){
 
     //dodaję wartości do obiektu Plan:
     if((inputPlanNameValue.length <= 50) &&  (inputPlanDescriptionValue.length <= 360) && (inputPlanWeekValue < 52  && inputPlanWeekValue >0)){
-        console.log("właściwe wartości input");
+       
 
         //dodaję wartości do nowego obiektu PLAN:
-        const planKey = new Plan(allPlans.length+1, inputPlanNameValue, inputPlanDescriptionValue,inputPlanWeekValue);
+        const planKey = new Plan(allPlans.length +1 , inputPlanNameValue, inputPlanDescriptionValue,inputPlanWeekValue);
         //dodaję do array z planami
         allPlans.push(planKey);
-        console.log(allPlans);
+        
         // dodaje obiekt do LS:
         localStorage.setItem("plan", JSON.stringify(allPlans));
         
@@ -223,7 +193,7 @@ function addNewPlan(){
 
 }
 
-// sprawdzenie -- --linia 93 w addEventListener do buttona zamykającego sekcję
+
 
 
 // funkcja, które=a resetuje dane z iputa- pokazuje pusty string
@@ -237,14 +207,53 @@ function clearPlanForm(){
 
     //sprawdzenie w linii 93- na eventListener button zapisz i wyjdz
 }
-/// funkcja, która przekazuje dane obiektu LS do drzewa DOM-html do f. w linii 141 renderPlanElement-tam zostanie dodana
 
+
+/// funkcja, która przekazuje dane obiektu LS do drzewa DOM-html do f. w linii 141 renderPlanElement-tam zostanie dodana
+// wywołuję f. w linii 144 - jesli strona z planami jest otwarta
 function getPlanFromLS(){
 
     //jeżeli w LS znajduje się obiekt planu:
     if(localStorage.getItem("plan") !== null){
+        //wyciągam z LS NOWĄ listę planów i wrzucam w array: (allPlan mi nie działa- nie ma dostępu-SPRAWDZIĆ DLACZEGO!!)
+        // const allPlanElements = localStorage.getItem("plan").split(",");
+        const allPlanElements = JSON.parse(localStorage.getItem("plan"));
         
+        //iteruję przez każdy element (obiekt) array i wypisuję wartości:
+        allPlanElements.forEach(function(singlePlan){
+            
+            // wywołuję funkcję, która napisze elementy DOM w pliku schedules.html
+            // z wartościami wyciągniętymi z LS linia 128
+            renderPlanElement(singlePlan);
+
+        });
     }
 
 }
 
+// jeżeli jesteśmy na stronie listy z planami - schedules.HTML- wypisujemy co mamy do tabeli 
+if(schedulesPage !== null){
+
+    getPlanFromLS();
+
+};
+
+//nie wiem czy niezbędna akurat tutaj:
+
+//funkcja, która swtorzy array z listą planów:
+
+let allPlans = []; // pusty array z planami, które doda użytkownik
+
+function addPlansToArray(){
+    //jeżeli localstorage już ma jakiś plan:
+    if(localStorage.getItem("plan")!==null){
+        const everyObject = JSON.parse(localStorage.plan);
+        everyObject.forEach(function(el){
+            allPlans.push(el);
+        });
+    }else{
+        allPlans =[];
+    };
+
+    //wywołanie funckji w przycisku button- zapisz i zamknij linia 93
+};
