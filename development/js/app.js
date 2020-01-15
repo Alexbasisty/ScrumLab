@@ -88,12 +88,13 @@ let allSelectElements = document.querySelectorAll('.week-schedule-select ul li s
 if(pulpit !== null){ 
     buttonSubmitSaveAndClose.addEventListener('click', function(event){
     
-        //jeżeli w localstorage znajdują się przepisy (lub na liście, muszę sprawdzić)
+        
         //wywołanie funkcji z linii 179-dodawanie nowego przepisu:
         addNewPlan();
-        //wywołanie funkcji dodającej plan do array
-        addPlansToArray(); //173 linia
-    
+        //wywołanie funkcji dodającej plan do array //173 linia
+        addPlansToArray(); 
+        //wywołanie funkcji czyszczącej dane z inputów
+        clearPlanForm();
     
         // na sam koniec zmieniamy display- ukrywamy add-plan-form a pokazujemy pulpit
     addNewPlanSection.style.display = 'none';
@@ -140,6 +141,7 @@ if(schedulesPage !== null){
 //funckja, która dodaje do Drzewa DOM nowy element listy z danymi nowego planu
 function renderPlanElement(plan){
     console.log('działam')
+
     //tworzę nowy element UL:
     const newUl = document.createElement('ul');
     newUl.classList.add('schedule');
@@ -216,17 +218,33 @@ function addNewPlan(){
         console.log(allPlans);
         // dodaje obiekt do LS:
         localStorage.setItem("plan", JSON.stringify(allPlans));
-
-        //ustawiam wartości inputów na puste stringi:
-        inputPlanNameValue = "";
-        inputPlanDescriptionValue = "";
-        inputPlanWeekValue = 0;
-        //ustawiam wartość countera +1 
         
     }
+
 }
 
 // sprawdzenie -- --linia 93 w addEventListener do buttona zamykającego sekcję
 
-///
+
+// funkcja, które=a resetuje dane z iputa- pokazuje pusty string
+
+function clearPlanForm(){
+    inputElementPlanName.value = "";
+    
+    inputElementPlanDescription.value = "";
+    
+    inputElementPlanWeekNumber.value =0;
+
+    //sprawdzenie w linii 93- na eventListener button zapisz i wyjdz
+}
+/// funkcja, która przekazuje dane obiektu LS do drzewa DOM-html do f. w linii 141 renderPlanElement-tam zostanie dodana
+
+function getPlanFromLS(){
+
+    //jeżeli w LS znajduje się obiekt planu:
+    if(localStorage.getItem("plan") !== null){
+        
+    }
+
+}
 
