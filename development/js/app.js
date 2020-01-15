@@ -70,7 +70,7 @@ addInstructionsButton.addEventListener('click', function () {
         const instructionUlEl = document.createElement('ul');
         instructionUlEl.innerHTML = `
               <li id="recipeCounter"></li>
-              <li>${instructionFieldValue}.<i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
+              <li class="instruction">${instructionFieldValue}.</li><li><i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
          `;
 
         if (instructionFieldValue.length > 0) {
@@ -78,21 +78,6 @@ addInstructionsButton.addEventListener('click', function () {
         }
 
     document.querySelector('#new-receipe-instruction').value = ""
-
-
-    // editing/deleting elements in new recipes
-
-    const removeButton = document.querySelectorAll('#instr-basket');
-    const editButton = document.querySelectorAll('#instr-edit-button');
-
-    removeButton.forEach(function (element) {
-        element.addEventListener('click', function (event) {
-            const liEl = this.parentElement;
-            const ulEl = liEl.parentElement;
-            ulEl.parentElement.removeChild(ulEl);
-        });
-    });
-
 });
 
 
@@ -107,24 +92,13 @@ addDescriptionButton.addEventListener('click', function (event) {
         <i class="far fa-trash-alt" id="description-basket"></i>
     `;
     const newLiEl = document.createElement('li');
+
     newLiEl.innerHTML = newElInner;
-    if(descriptionFieldValue.length > 0) {
+    if (descriptionFieldValue.length > 0) {
         descriptionList.appendChild(newLiEl);
     }
     document.querySelector('#new-receipe-ingredient').value = ""
-
-// editing/deleting elements in new recipes
-
-    removeButton.forEach(function (element) {
-        element.addEventListener('click', function (event) {
-            const liEl = element.parentElement;
-            const ulEl = liEl.parentElement;
-            ulEl.removeChild(liEl);
-        });
-    });
-
 });
-
 // correct list numbers in instructions
 
 document.querySelector('.recipe-instruction').addEventListener('click', function () {
@@ -157,11 +131,19 @@ saveCloseButton.addEventListener('click',function () {
 
 
  if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0) {
-     // let recipeKey = 'recipe' + counter;
-     // console.log(recipeKey);
-     // console.log(counter);
-
      const recipeKey = new Recipe(allRecipes.length + 1, nameRecipeValue, descriptionFieldValue);
+
+     const allInstructionContent = document.querySelectorAll('.instruction');
+     allInstructionContent.forEach(function (element) {
+         recipeKey.instructions.push(element.textContent);
+     });
+
+     const allDescriptions = document.querySelectorAll('.description-list li');
+     allDescriptions.forEach(function (element) {
+         recipeKey.ingredients.push(element.textContent);
+         console.log(element.textContent);
+     });
+
      allRecipes.push(recipeKey);
 
      console.log(recipeKey);
@@ -170,7 +152,7 @@ saveCloseButton.addEventListener('click',function () {
      newUl.classList.add('recipe');
 
      newUl.innerHTML = `
-                    <li id="recipeCounter">${recipeKey.id}</li>
+                    <li>${recipeKey.id}</li>
                     <li>${recipeKey.title}</li>
                     <li>${recipeKey.description}</li>
                     <li>
@@ -186,9 +168,15 @@ saveCloseButton.addEventListener('click',function () {
      allRecipesDivEl.appendChild(newUl);
      counter++;
      document.querySelector('#new-receipe-name').value = "";
-     document.querySelector('#new-receipe-description').value = ""
- }
+     document.querySelector('#new-receipe-description').value = "";
+     document.querySelector('.instruction-list').textContent = "";
+     document.querySelector('.description-list ul').textContent = "";
 
+
+
+
+
+ }
 });
 function loadRecipesList() {
     if (localStorage.getItem("recipe") !== null) {
@@ -199,7 +187,7 @@ function loadRecipesList() {
             const allRecipesDivEl = document.querySelector('.all-recipes');
 
             newUl.innerHTML = `
-                    <li id="recipeCounter">${element.id}</li>
+                    <li>${element.id}</li>
                     <li>${element.title}</li>
                     <li>${element.description}</li>
                     <li>
