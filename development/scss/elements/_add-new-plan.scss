@@ -84,14 +84,14 @@
             color: $tables_and-icons;
             
         }
-        input{
+        input, textarea{
             width: 70%;
             height: 25px;
             padding: 0 10px;
 
         }
 
-        input.plan-description{
+        textarea.plan-description{
             height: 100px;
             // zaczyna pisać od środka!!
             

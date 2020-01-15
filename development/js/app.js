@@ -89,8 +89,10 @@ if(pulpit !== null){
     buttonSubmitSaveAndClose.addEventListener('click', function(event){
     
         //jeżeli w localstorage znajdują się przepisy (lub na liście, muszę sprawdzić)
-        
-        addInputValueToLS();
+        //wywołanie funkcji z linii 179-dodawanie nowego przepisu:
+        addNewPlan();
+        //wywołanie funkcji dodającej plan do array
+        addPlansToArray(); //173 linia
     
     
         // na sam koniec zmieniamy display- ukrywamy add-plan-form a pokazujemy pulpit
@@ -164,6 +166,24 @@ function renderPlanElement(plan){
 };
 
 
+//funkcja, która swtorzy array z listą planów:
+let planCounter = 0; //licznik planów
+let allPlans = []; // pusty array z planami, które doda użytkownik
+
+function addPlansToArray(){
+    //jeżeli localstorage już ma jakiś plan:
+    if(localStorage.getItem("plan")!==null){
+        const everyObject = JSON.parse(localStorage.plan);
+        everyObject.forEach(function(el){
+            allPlans.push(el);
+        });
+    }else{
+        allPlans =[];
+    };
+
+    //wywołanie funckji w przycisku button- zapisz i zamknij linia 93
+};
+
 
 
 // funkcja, która pobiera wartości wpisane do inputów i przekazuje je do LS:
@@ -171,21 +191,30 @@ function renderPlanElement(plan){
 //input z nazwą planu
 const inputElementPlanName = document.querySelector('input.plan-name');
 //input z opisem planu:
-const inputElementPlanDescription = document.querySelector('input.plan-description');
+const inputElementPlanDescription = document.querySelector('textarea.plan-description');
 //input z numerem tygodnia:
 const inputElementPlanWeekNumber = document.querySelector('input.plan-week-number');
 
 //funkcja:
-function addInputValueToLS(){
+function addNewPlan(){
     //zmienne, które wypiszą waartości wpisane w inputy:
     const inputPlanNameValue = inputElementPlanName.value;
-    console.log(inputPlanNameValue);
+    
     const inputPlanDescriptionValue = inputElementPlanDescription.value;
-    console.log(inputPlanDescriptionValue);
+    
     const inputPlanWeekValue = inputElementPlanWeekNumber.value;
-    console.log(inputPlanWeekValue);
+    
 
     //dodaję wartości do obiektu Plan:
+    if((inputPlanNameValue.length <= 50) &&  (inputPlanDescriptionValue.length <= 360) && (inputPlanWeekValue < 52  && inputPlanWeekValue >0)){
+        console.log("właściwe wartości input");
+
+        //dodaję wartości do nowego obiektu PLAN:
+        const planKey = new Plan(allPlans.length+1, inputPlanNameValue, inputPlanDescriptionValue,inputPlanWeekValue);
+        //dodaję do array z planami
+        allPlans.push(planKey);
+        console.log(allPlans);
+    }
     
 
 
