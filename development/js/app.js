@@ -70,7 +70,7 @@ addInstructionsButton.addEventListener('click', function () {
         const instructionUlEl = document.createElement('ul');
         instructionUlEl.innerHTML = `
               <li id="recipeCounter"></li>
-              <li class="instruction">${instructionFieldValue}.</li><li><i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
+              <li class="instruction">${instructionFieldValue}.<i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
          `;
 
         if (instructionFieldValue.length > 0) {
@@ -100,15 +100,15 @@ addDescriptionButton.addEventListener('click', function (event) {
     document.querySelector('#new-receipe-ingredient').value = ""
 });
 // correct list numbers in instructions
-
-document.querySelector('.recipe-instruction').addEventListener('click', function () {
+function correctLiNum() {
     const allLiCounters = document.querySelectorAll('#recipeCounter');
     let counter = 1;
     allLiCounters.forEach(function (element) {
         element.innerText = counter + '.';
         counter++;
-    })
-});
+    });
+}
+document.querySelector('.recipe-instruction').addEventListener('click', correctLiNum);
 
 //  ******************************
 //  new recipe to the list
@@ -135,12 +135,12 @@ saveCloseButton.addEventListener('click',function () {
 
      const allInstructionContent = document.querySelectorAll('.instruction');
      allInstructionContent.forEach(function (element) {
-         recipeKey.instructions.push(element.textContent);
+         recipeKey.instructions.push(element.innerText);
      });
 
      const allDescriptions = document.querySelectorAll('.description-list li');
      allDescriptions.forEach(function (element) {
-         recipeKey.ingredients.push(element.textContent);
+         recipeKey.ingredients.push(element.innerText);
          console.log(element.textContent);
      });
 
@@ -204,6 +204,57 @@ function loadRecipesList() {
         }
 }
 loadRecipesList();
+
+if (localStorage.getItem("recipe") !== null) {
+    const editButton = document.querySelectorAll('.edit-recipe');
+    editButton.forEach(function (element) {
+        element.addEventListener('click', function () {
+            listRecipesSection.style.display = 'none';
+            addRecipeSection.classList.toggle('hidden');
+
+            const currRecipeID = JSON.parse(element.parentElement.parentElement.firstElementChild.innerText);
+            const currRecipeObject = JSON.parse(localStorage.recipe)[currRecipeID - 1];
+            let currRecipeName = currRecipeObject.title;
+            let currRecipeDescription = currRecipeObject.description;
+            let currRecipeInstructions = currRecipeObject.instructions;
+            let currRecipeIngredients = currRecipeObject.ingredients;
+
+            currRecipeInstructions.forEach(function (element) {
+                const instructionUlEl = document.createElement('ul');
+                instructionUlEl.innerHTML = `
+              <li id="recipeCounter"></li>
+              <li class="instruction">${element}<i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
+         `;
+                instructionListEl.appendChild(instructionUlEl);
+                correctLiNum();
+            });
+
+            currRecipeIngredients.forEach(function (element) {
+                const newElInner = `
+    ${element}
+        <i class="far fa-edit" id="description-edit"></i>
+        <i class="far fa-trash-alt" id="description-basket"></i>
+    `;
+                const newLiEl = document.createElement('li');
+
+                newLiEl.innerHTML = newElInner;
+                    descriptionList.appendChild(newLiEl);
+            });
+            document.querySelector('#new-receipe-name').value = currRecipeName;
+            document.querySelector('#new-receipe-description').value = currRecipeDescription;
+
+            saveCloseButton.addEventListener('click', function () {
+                currRecipeName = document.querySelector('#new-receipe-name').value;
+                currRecipeDescription = document.querySelector('#new-receipe-description').value
+
+            })
+
+
+        })
+    })
+}
+
+
 
 /*
  **********************************************************************
