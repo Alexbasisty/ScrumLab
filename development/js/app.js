@@ -167,7 +167,7 @@ function renderPlanElement(plan){
 
 
 //funkcja, która swtorzy array z listą planów:
-let planCounter = 0; //licznik planów
+
 let allPlans = []; // pusty array z planami, które doda użytkownik
 
 function addPlansToArray(){
@@ -198,11 +198,11 @@ const inputElementPlanWeekNumber = document.querySelector('input.plan-week-numbe
 //funkcja:
 function addNewPlan(){
     //zmienne, które wypiszą waartości wpisane w inputy:
-    const inputPlanNameValue = inputElementPlanName.value;
+    let inputPlanNameValue = inputElementPlanName.value;
     
-    const inputPlanDescriptionValue = inputElementPlanDescription.value;
+    let inputPlanDescriptionValue = inputElementPlanDescription.value;
     
-    const inputPlanWeekValue = inputElementPlanWeekNumber.value;
+    let inputPlanWeekValue = inputElementPlanWeekNumber.value;
     
 
     //dodaję wartości do obiektu Plan:
@@ -214,12 +214,19 @@ function addNewPlan(){
         //dodaję do array z planami
         allPlans.push(planKey);
         console.log(allPlans);
+        // dodaje obiekt do LS:
+        localStorage.setItem("plan", JSON.stringify(allPlans));
+
+        //ustawiam wartości inputów na puste stringi:
+        inputPlanNameValue = "";
+        inputPlanDescriptionValue = "";
+        inputPlanWeekValue = 0;
+        //ustawiam wartość countera +1 
+        
     }
-    
-
-
-
 }
 
-// sprawdzenie pobierania danych z formularza add new plan --linia 93 w addEventListener do buttona zamykającego sekcję
+// sprawdzenie -- --linia 93 w addEventListener do buttona zamykającego sekcję
+
+///
 
