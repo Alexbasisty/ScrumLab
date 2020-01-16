@@ -41,6 +41,7 @@ const descriptionList = document.querySelector('.description-list ul');
 let counter = 0;
 let allRecipes = [];
 
+
     function fillArrWithRecipes () {
         if (localStorage.getItem("recipe") !== null) {
             const everyObject = JSON.parse(localStorage.recipe);
@@ -61,7 +62,6 @@ addRecipeButton.addEventListener('click', function (event) {
 saveCloseButton.addEventListener('click', function (event) {
     listRecipesSection.style.display = 'inherit';
     addRecipeSection.classList.toggle('hidden');
-    let editButton = document.querySelectorAll('.edit-recipe');
 });
 
 
@@ -148,13 +148,12 @@ saveCloseButton.addEventListener('click',function () {
 
      allRecipes.push(recipeKey);
 
-     console.log(recipeKey);
      localStorage.setItem("recipe", JSON.stringify(allRecipes));
      const newUl = document.createElement('ul');
      newUl.classList.add('recipe');
 
      newUl.innerHTML = `
-                    <li>${recipeKey.id}</li>
+                    <li>${allRecipes.indexOf(recipeKey) +1}</li>
                     <li>${recipeKey.title}</li>
                     <li>${recipeKey.description}</li>
                     <li>
@@ -173,21 +172,22 @@ saveCloseButton.addEventListener('click',function () {
      document.querySelector('#new-receipe-description').value = "";
      document.querySelector('.instruction-list').textContent = "";
      document.querySelector('.description-list ul').textContent = "";
-     editButton = document.querySelectorAll('.edit-recipe');
-
  }
 });
 
 function loadRecipesList() {
     if (localStorage.getItem("recipe") !== null) {
         const recipeObjects = JSON.parse(localStorage.recipe);
-        recipeObjects.forEach(function (element) {
+
+        localStorage.removeItem('recipe');
+
+           recipeObjects.forEach(function (element) {
             const newUl = document.createElement('ul');
             newUl.classList.add('recipe');
             const allRecipesDivEl = document.querySelector('.all-recipes');
 
             newUl.innerHTML = `
-                    <li>${element.id}</li>
+                    <li>${recipeObjects.indexOf(element) + 1}</li>
                     <li>${element.title}</li>
                     <li>${element.description}</li>
                     <li>
@@ -200,14 +200,15 @@ function loadRecipesList() {
                     </li>
          `;
             allRecipesDivEl.appendChild(newUl);
-        })
-        }
+        });
+           localStorage.setItem('recipe', JSON.stringify(recipeObjects));
+     }
 }
 loadRecipesList();
 
 if (localStorage.getItem("recipe") !== null) {
-
     let editButton = document.querySelectorAll('.edit-recipe');
+
 
     editButton.forEach(function (element) {
         element.addEventListener('click', function () {
@@ -216,6 +217,8 @@ if (localStorage.getItem("recipe") !== null) {
 
             const currRecipeID = JSON.parse(element.parentElement.parentElement.firstElementChild.innerText);
             const currRecipeObject = JSON.parse(localStorage.recipe)[currRecipeID - 1];
+            console.log(currRecipeObject);
+
             let currRecipeName = currRecipeObject.title;
             let currRecipeDescription = currRecipeObject.description;
             let currRecipeInstructions = currRecipeObject.instructions;
@@ -245,8 +248,10 @@ if (localStorage.getItem("recipe") !== null) {
 
             document.querySelector('#new-receipe-name').value = currRecipeName;
             document.querySelector('#new-receipe-description').value = currRecipeDescription;
+            const saveButton = document.querySelector('.add-receipe-header button');
+            saveButton.classList.remove('save-close');
 
-            saveCloseButton.addEventListener('click', function () {
+            saveButton.addEventListener('click', function () {
                 currRecipeName = document.querySelector('#new-receipe-name').value;
                 currRecipeDescription = document.querySelector('#new-receipe-description').value;
             })
@@ -254,10 +259,26 @@ if (localStorage.getItem("recipe") !== null) {
 
         });
 
-    })
+    });
+    const deleteButtons = document.querySelectorAll('.delete-recipe');
+
+
+        deleteButtons.forEach(function (element) {
+            element.addEventListener('click', function f() {
+
+                if(deleteButtons.length === 1) {
+                    localStorage.removeItem('recipe');
+                } else {
+                    const currRecipeID = JSON.parse(element.parentElement.parentElement.firstElementChild.textContent);
+                    const currIndex = currRecipeID - 1;
+                    const recipeArr = JSON.parse(localStorage.recipe);
+                    localStorage.removeItem('recipe');
+                    recipeArr.splice(currIndex, 1);
+                    localStorage.setItem("recipe", JSON.stringify(recipeArr));
+                }
+            });
+     })
 }
-
-
 
 /*
  **********************************************************************
