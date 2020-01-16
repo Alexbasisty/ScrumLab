@@ -172,15 +172,17 @@ saveCloseButton.addEventListener('click',function () {
      document.querySelector('#new-receipe-description').value = "";
      document.querySelector('.instruction-list').textContent = "";
      document.querySelector('.description-list ul').textContent = "";
+
+
  }
+    loadRecipesList();
 });
 
 function loadRecipesList() {
     if (localStorage.getItem("recipe") !== null) {
         const recipeObjects = JSON.parse(localStorage.recipe);
 
-        localStorage.removeItem('recipe');
-
+        document.querySelector('.all-recipes').innerHTML = "";
            recipeObjects.forEach(function (element) {
             const newUl = document.createElement('ul');
             newUl.classList.add('recipe');
@@ -202,7 +204,9 @@ function loadRecipesList() {
             allRecipesDivEl.appendChild(newUl);
         });
            localStorage.setItem('recipe', JSON.stringify(recipeObjects));
-     }
+     } else {
+        document.querySelector('.all-recipes').innerHTML = "";
+    }
 }
 loadRecipesList();
 
@@ -215,8 +219,11 @@ if (localStorage.getItem("recipe") !== null) {
             listRecipesSection.style.display = 'none';
             addRecipeSection.classList.toggle('hidden');
 
+            const recipeArr = JSON.parse(localStorage.recipe);
+            localStorage.removeItem('recipe');
+
             const currRecipeID = JSON.parse(element.parentElement.parentElement.firstElementChild.innerText);
-            const currRecipeObject = JSON.parse(localStorage.recipe)[currRecipeID - 1];
+            const currRecipeObject = recipeArr[currRecipeID - 1];
             console.log(currRecipeObject);
 
             let currRecipeName = currRecipeObject.title;
@@ -249,14 +256,14 @@ if (localStorage.getItem("recipe") !== null) {
             document.querySelector('#new-receipe-name').value = currRecipeName;
             document.querySelector('#new-receipe-description').value = currRecipeDescription;
             const saveButton = document.querySelector('.add-receipe-header button');
-            saveButton.classList.remove('save-close');
 
             saveButton.addEventListener('click', function () {
-                currRecipeName = document.querySelector('#new-receipe-name').value;
-                currRecipeDescription = document.querySelector('#new-receipe-description').value;
-            })
+                currRecipeObject.title = document.querySelector('#new-receipe-name').value;
+                currRecipeObject.description = document.querySelector('#new-receipe-description').value;
 
+            });
 
+            localStorage.setItem('recipe', JSON.stringify(recipeArr));
         });
 
     });
@@ -268,6 +275,7 @@ if (localStorage.getItem("recipe") !== null) {
 
                 if(deleteButtons.length === 1) {
                     localStorage.removeItem('recipe');
+                    loadRecipesList();
                 } else {
                     const currRecipeID = JSON.parse(element.parentElement.parentElement.firstElementChild.textContent);
                     const currIndex = currRecipeID - 1;
@@ -275,7 +283,9 @@ if (localStorage.getItem("recipe") !== null) {
                     localStorage.removeItem('recipe');
                     recipeArr.splice(currIndex, 1);
                     localStorage.setItem("recipe", JSON.stringify(recipeArr));
+                    loadRecipesList();
                 }
+
             });
      })
 }
