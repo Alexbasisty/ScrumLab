@@ -27,6 +27,9 @@ body{
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
+                a{
+                    text-decoration: none;
+                }
                 // border: 1px solid blue;
 
                 .add-recipe, .add-plan{

@@ -33,7 +33,9 @@ if (formEl !== null) {
 
 loadPage();
 
-const newRecipe = document.querySelector(".new-recipes");
+const newRecipe = document.querySelector("section.new-recipes");
+// const buttonAddNewRecipes = document.querySelector('.widgets .add-recipe');
+
 
 //    adding recipe
 
@@ -294,6 +296,7 @@ if (localStorage.getItem("recipe") !== null) {
 const addNewPlanSection = document.querySelector('section.add-new-plan');
 //button dodawania nowego planu na pulpicie(zielony krzyżyk):
 const buttonAddNewPlan = document.querySelector('.widgets .add-plan');
+
 // sekcja pulpitu
 const pulpit = document.querySelector('section.pulpit');
 
@@ -304,6 +307,10 @@ if(pulpit !== null){
         addNewPlanSection.style.display = 'block';
         pulpit.style.display = 'none';
     });
+    // buttonAddNewRecipes.addEventListener('click', function(event){
+    //     newRecipe.style.display = 'block';
+    //     pulpit.style.display = 'none';
+    // });
 }
 
 
