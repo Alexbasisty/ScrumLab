@@ -124,15 +124,15 @@ document.querySelector('.recipe-instruction').addEventListener('click', correctL
 //  ******************************
 //  new recipe to the list
 // ***********************************
-
+function Recipe(id, title, description) {
+    this.id = id; // id przepisu
+    this.title = title; // nazwa przepisu
+    this.description = description; // opis przepisu
+    this.ingredients = []; // składniki przepisu
+    this.instructions = []; // instrukcje przepisu
+}
 saveCloseButton.addEventListener('click',function () {
-    function Recipe(id, title, description) {
-        this.id = id; // id przepisu
-        this.title = title; // nazwa przepisu
-        this.description = description; // opis przepisu
-        this.ingredients = []; // składniki przepisu
-        this.instructions = []; // instrukcje przepisu
-    }
+
 
     const nameRecipeValue = document.querySelector('#new-receipe-name').value;
     const descriptionFieldValue = document.querySelector('#new-receipe-description').value;
@@ -244,22 +244,13 @@ if (localStorage.getItem("recipe") !== null) {
                 document.querySelector('#new-receipe-name').value = currRecipeName;
                 document.querySelector('#new-receipe-description').value = currRecipeDescription;
 
-                const saveButton = document.querySelector('.add-receipe-header button');
-                saveButton.classList.remove('save-close');
-
-                saveButton.addEventListener('click', function (event) {
-                    currRecipeObject.title = document.querySelector('#new-receipe-name').value;
-                    currRecipeObject.description = document.querySelector('#new-receipe-description').value;
-
-                    localStorage.setItem('recipe', JSON.stringify(recipeArr));
-
-                    fillArrWithRecipes();
-                    loadRecipesList();
-
-                    saveButton.classList.add('save-close');
-                });
 
 
+             recipeArr.splice(currRecipeID - 1, 1);
+
+
+            localStorage.setItem("recipe", JSON.stringify(recipeArr));
+            fillArrWithRecipes();
         }
 
         const deleteButtons = document.querySelectorAll('.delete-button');
