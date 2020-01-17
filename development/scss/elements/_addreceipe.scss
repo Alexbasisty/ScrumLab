@@ -1,0 +1,183 @@
+.add-receipe-form {
+    width: calc(100vw - 336px);
+    height: calc(100vh - 155px);
+    margin: 30px 70px;
+    background-color: $background-screen;
+    border: 1px dashed $tables_and-icons;
+    display: flex;
+    flex-direction: column;
+    color: $header_column-text;
+    font-weight: 600;
+    text-align: left;
+
+    .container {
+        padding: 30px;
+    }
+}
+
+.add-receipe-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid lightgray;
+    h1 {
+        font-size: 1.75rem;
+        text-transform: uppercase;
+        text-align: left;
+        color: $buttons_screen-headers;
+
+    }
+    button {
+        padding: 6px 10px;
+        border: none;
+        font-weight: 600;
+        background-color: $buttons_screen-headers;
+        color: #ffffff;
+        cursor: pointer;
+        margin-bottom: 0.5em;
+    }
+}
+
+.add-receipe-overall-form {
+    display: flex;
+    padding: 0.5em;
+
+    label {
+        font-size: 1.5em;
+        font-weight: 400;
+        width: 179px;
+        text-align: left;
+    }
+    input {
+        flex: 1;
+        padding: 0 10px;
+        margin-left: 1em;
+        font-size: 0.9em;
+        margin-right: 50px;
+
+        &#new-receipe-name {
+            height: 30px;
+        }
+    }
+    textarea#new-receipe-description {
+        height: 72px;
+        flex: 1;
+        resize: none;
+        padding: 0 10px;
+        margin-left: 1.25em;
+        margin-right: 50px;
+        font-size: 0.9em;
+        line-height: 1.3em;
+    }
+    }
+
+
+.add-receipe-details {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        border-bottom: 1px solid $tables_and-icons;
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+    }
+
+    .instruction-input {
+        height: 5em;
+    }
+
+    .recipe-instruction {
+        width: 50%;
+        padding-right: 20px;
+
+        textarea {
+            resize: none;
+            padding: 0 10px;
+            width: calc(100% - 60px);
+            height: 76px;
+            font-size: 1rem;
+       }
+    }
+
+    .instruction-list {
+        overflow-y: scroll;
+        height: 198px;
+        margin-top: 1em;
+        width: calc(100% - 30px);
+    }
+    ul {
+        display: flex;
+        li {
+            padding-bottom: 0.5em;
+            font-weight: 400;
+        }
+    }
+
+    .recipe-instruction {
+
+        span {
+            height: 10em;
+        }
+        input {
+            width: 30vw;
+        }
+    }
+    .recipe-description {
+        width: 50%;
+
+        .recipe-input {
+            height: 5em;
+        }
+
+        .description-list {
+            overflow-y: scroll;
+            height: 198px;
+            margin-top: 1em;
+            width: calc(100% - 30px);
+
+
+            ul {
+                display: flex;
+                flex-direction: column;
+
+                li {
+                    padding-bottom: 0.5em;
+                    font-weight: 400;
+                    &:before {
+                        content: '\2022';
+                        width: 1em;
+                        float: left;
+                    }
+                }
+            }
+        }
+
+        input#new-receipe-ingredient {
+            width: calc(100% - 60px);
+            margin-right: 5px;
+            height: 37px;
+            padding: 0 10px;
+        }
+    }
+}
+
+.far.fa-edit {
+    color: $warning-message;
+    cursor: pointer;
+}
+
+.far.fa-trash-alt {
+    color: $basket-icon;
+    cursor: pointer;
+
+}
+.fa-plus-square.add-recipe {
+    color: $success-message;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
