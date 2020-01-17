@@ -33,10 +33,11 @@ if (formEl !== null) {
 
 loadPage();
 
-
+const newRecipe = document.querySelector(".new-recipes");
 
 //    adding recipe
 
+if(newRecipe !== null) {
 const addRecipeButton = document.querySelector('.top-bar .fa-plus-square.add-recipe');
 const listRecipesSection = document.querySelector('section.list-of-recipes');
 const addRecipeSection = document.querySelector('section.add-receipe-form');
@@ -46,118 +47,138 @@ const addDescriptionButton = document.querySelector('.recipe-description .add-re
 const instructionListEl = document.querySelector('.instruction-list');
 const descriptionList = document.querySelector('.description-list ul');
 let allRecipes = [];
-const listOfRecipes = document.querySelector(".list-of-recipes");
 
 
-    function fillArrWithRecipes () {
-        if (localStorage.getItem("recipe") !== null) {
-            const everyObject = JSON.parse(localStorage.recipe);
-            allRecipes = [];
-            everyObject.forEach(function (element) {
-                allRecipes.push(element);
-            })
-        } else {
-            allRecipes = [];
-        }
+function fillArrWithRecipes () {
+    if (localStorage.getItem("recipe") !== null) {
+        const everyObject = JSON.parse(localStorage.recipe);
+        allRecipes = [];
+        everyObject.forEach(function (element) {
+            allRecipes.push(element);
+        })
+    } else {
+        allRecipes = [];
     }
+}
 fillArrWithRecipes();
 
-    if(listOfRecipes !== null) {
-        addRecipeButton.addEventListener('click', function (event) {
-            listRecipesSection.style.display = 'none';
-            addRecipeSection.classList.toggle('hidden');
+addRecipeButton.addEventListener('click', function (event) {
+    listRecipesSection.style.display = 'none';
+    addRecipeSection.classList.toggle('hidden');
 
-        });
+});
 
-        saveCloseButton.addEventListener('click', function (event) {
-            listRecipesSection.style.display = 'inherit';
-            addRecipeSection.classList.toggle('hidden');
-        });
-
-
-        addInstructionsButton.addEventListener('click', function () {
-            let instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
+saveCloseButton.addEventListener('click', function (event) {
+    listRecipesSection.style.display = 'inherit';
+    addRecipeSection.classList.toggle('hidden');
+});
 
 
-            const instructionUlEl = document.createElement('ul');
-            instructionUlEl.innerHTML = `
+addInstructionsButton.addEventListener('click', function () {
+    let instructionFieldValue = document.querySelector('#new-receipe-instruction').value;
+
+
+    const instructionUlEl = document.createElement('ul');
+    instructionUlEl.innerHTML = `
               <li id="recipeCounter"></li>
               <li class="instruction">${instructionFieldValue}.<i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
          `;
 
-            if (instructionFieldValue.length > 0) {
-                instructionListEl.appendChild(instructionUlEl);
-            }
+    if (instructionFieldValue.length > 0) {
+        instructionListEl.appendChild(instructionUlEl);
+    }
 
-            document.querySelector('#new-receipe-instruction').value = ""
-        });
+    document.querySelector('#new-receipe-instruction').value = ""
+});
 
 
-        addDescriptionButton.addEventListener('click', function (event) {
-            let descriptionFieldValue = document.querySelector('#new-receipe-ingredient').value;
-            const removeButton = document.querySelectorAll('#description-basket');
-            const editButton = document.querySelectorAll('#description-edit');
+addDescriptionButton.addEventListener('click', function (event) {
+    let descriptionFieldValue = document.querySelector('#new-receipe-ingredient').value;
+    const removeButton = document.querySelectorAll('#description-basket');
+    const editButton = document.querySelectorAll('#description-edit');
 
-            const newElInner = `
+    const newElInner = `
     ${descriptionFieldValue}
         <i class="far fa-edit" id="description-edit"></i>
         <i class="far fa-trash-alt" id="description-basket"></i>
     `;
-            const newLiEl = document.createElement('li');
+    const newLiEl = document.createElement('li');
 
-            newLiEl.innerHTML = newElInner;
-            if (descriptionFieldValue.length > 0) {
-                descriptionList.appendChild(newLiEl);
-            }
-            document.querySelector('#new-receipe-ingredient').value = ""
+    newLiEl.innerHTML = newElInner;
+    if (descriptionFieldValue.length > 0) {
+        descriptionList.appendChild(newLiEl);
+    }
+    document.querySelector('#new-receipe-ingredient').value = ""
+});
+
+
+// correct list numbers in instructions
+function correctLiNum() {
+    const allLiCounters = document.querySelectorAll('#recipeCounter');
+    let counter = 1;
+    allLiCounters.forEach(function (element) {
+        element.innerText = counter + '.';
+        counter++;
+    });
+}
+document.querySelector('.recipe-instruction').addEventListener('click', correctLiNum);
+
+//  ******************************
+//  new recipe to the list
+// ***********************************
+function Recipe(id, title, description) {
+    this.id = id; // id przepisu
+    this.title = title; // nazwa przepisu
+    this.description = description; // opis przepisu
+    this.ingredients = []; // składniki przepisu
+    this.instructions = []; // instrukcje przepisu
+}
+saveCloseButton.addEventListener('click',function () {
+
+
+    const nameRecipeValue = document.querySelector('#new-receipe-name').value;
+    const descriptionFieldValue = document.querySelector('#new-receipe-description').value;
+
+    if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0) {
+        const recipeKey = new Recipe(allRecipes.length + 1, nameRecipeValue, descriptionFieldValue);
+
+        const allInstructionContent = document.querySelectorAll('.instruction');
+        allInstructionContent.forEach(function (element) {
+            recipeKey.instructions.push(element.innerText);
         });
-        document.querySelector('.recipe-instruction').addEventListener('click', correctLiNum);
 
-        saveCloseButton.addEventListener('click',function () {
-
-
-            const nameRecipeValue = document.querySelector('#new-receipe-name').value;
-            const descriptionFieldValue = document.querySelector('#new-receipe-description').value;
-
-            if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0) {
-                const recipeKey = new Recipe(allRecipes.length + 1, nameRecipeValue, descriptionFieldValue);
-
-                const allInstructionContent = document.querySelectorAll('.instruction');
-                allInstructionContent.forEach(function (element) {
-                    recipeKey.instructions.push(element.innerText);
-                });
-
-                const allDescriptions = document.querySelectorAll('.description-list li');
-                allDescriptions.forEach(function (element) {
-                    recipeKey.ingredients.push(element.innerText);
-                    console.log(element.textContent);
-                });
-
-                allRecipes.push(recipeKey);
-
-                localStorage.setItem("recipe", JSON.stringify(allRecipes));
-
-                document.querySelector('#new-receipe-name').value = "";
-                document.querySelector('#new-receipe-description').value = "";
-                document.querySelector('.instruction-list').textContent = "";
-                document.querySelector('.description-list ul').textContent = "";
-
-            }
-            loadRecipesList();
-
+        const allDescriptions = document.querySelectorAll('.description-list li');
+        allDescriptions.forEach(function (element) {
+            recipeKey.ingredients.push(element.innerText);
+            console.log(element.textContent);
         });
-        function loadRecipesList() {
-            if (localStorage.getItem("recipe") !== null) {
-                const recipeObjects = JSON.parse(localStorage.recipe);
-                const allRecipesDivEl = document.querySelector('.all-recipes');
-                allRecipesDivEl.innerHTML = "";
 
-                recipeObjects.forEach(function (element) {
-                    const newUl = document.createElement('ul');
-                    newUl.classList.add('recipe');
+        allRecipes.push(recipeKey);
+
+        localStorage.setItem("recipe", JSON.stringify(allRecipes));
+
+        document.querySelector('#new-receipe-name').value = "";
+        document.querySelector('#new-receipe-description').value = "";
+        document.querySelector('.instruction-list').textContent = "";
+        document.querySelector('.description-list ul').textContent = "";
+
+    }
+    loadRecipesList();
+
+});
+
+function loadRecipesList() {
+    if (localStorage.getItem("recipe") !== null) {
+        const recipeObjects = JSON.parse(localStorage.recipe);
+        const allRecipesDivEl = document.querySelector('.all-recipes');
+        allRecipesDivEl.innerHTML = "";
+
+        recipeObjects.forEach(function (element) {
+            const newUl = document.createElement('ul');
+            newUl.classList.add('recipe');
 
 
-                    newUl.innerHTML = `
+            newUl.innerHTML = `
                     <li>${recipeObjects.indexOf(element) + 1}</li>
                     <li>${element.title}</li>
                     <li>${element.description}</li>
@@ -170,38 +191,13 @@ fillArrWithRecipes();
                         <i class="fas fa-print"></i>
                     </li>
          `;
-                    allRecipesDivEl.appendChild(newUl);
-                });
-            } else {
-                document.querySelector('.all-recipes').innerHTML = "";
-            }
-        }
+            allRecipesDivEl.appendChild(newUl);
+        });
+    } else {
+        document.querySelector('.all-recipes').innerHTML = "";
     }
-
-
-
-// correct list numbers in instructions
-function correctLiNum() {
-    const allLiCounters = document.querySelectorAll('#recipeCounter');
-    let counter = 1;
-    allLiCounters.forEach(function (element) {
-        element.innerText = counter + '.';
-        counter++;
-    });
-    loadRecipesList();
 }
-
-
-//  ******************************
-//  new recipe to the list
-// ***********************************
-function Recipe(id, title, description) {
-    this.id = id; // id przepisu
-    this.title = title; // nazwa przepisu
-    this.description = description; // opis przepisu
-    this.ingredients = []; // składniki przepisu
-    this.instructions = []; // instrukcje przepisu
-}
+loadRecipesList();
 
 if (localStorage.getItem("recipe") !== null) {
     const listContainer = document.querySelector('.all-recipes');
@@ -210,49 +206,49 @@ if (localStorage.getItem("recipe") !== null) {
 
         if(event.target.classList.contains('edit-recipe')) {
 
-                listRecipesSection.style.display = 'none';
-                addRecipeSection.classList.toggle('hidden');
+            listRecipesSection.style.display = 'none';
+            addRecipeSection.classList.toggle('hidden');
 
-                const recipeArr = JSON.parse(localStorage.recipe);
-                localStorage.removeItem('recipe');
+            const recipeArr = JSON.parse(localStorage.recipe);
+            localStorage.removeItem('recipe');
 
-                const currRecipeID = JSON.parse(event.target.parentElement.parentElement.firstElementChild.innerText);
-                const currRecipeObject = recipeArr[currRecipeID - 1];
-                console.log(currRecipeObject);
+            const currRecipeID = JSON.parse(event.target.parentElement.parentElement.firstElementChild.innerText);
+            const currRecipeObject = recipeArr[currRecipeID - 1];
+            console.log(currRecipeObject);
 
-                let currRecipeName = currRecipeObject.title;
-                let currRecipeDescription = currRecipeObject.description;
-                let currRecipeInstructions = currRecipeObject.instructions;
-                let currRecipeIngredients = currRecipeObject.ingredients;
+            let currRecipeName = currRecipeObject.title;
+            let currRecipeDescription = currRecipeObject.description;
+            let currRecipeInstructions = currRecipeObject.instructions;
+            let currRecipeIngredients = currRecipeObject.ingredients;
 
-                currRecipeInstructions.forEach(function (element) {
-                    const instructionUlEl = document.createElement('ul');
-                    instructionUlEl.innerHTML = `
+            currRecipeInstructions.forEach(function (element) {
+                const instructionUlEl = document.createElement('ul');
+                instructionUlEl.innerHTML = `
               <li id="recipeCounter"></li>
               <li class="instruction">${element}<i class="far fa-edit" id="instr-edit-button"></i><i class="far fa-trash-alt" id="instr-basket"></i></li>
          `;
-                    instructionListEl.appendChild(instructionUlEl);
-                    correctLiNum();
-                });
+                instructionListEl.appendChild(instructionUlEl);
+                correctLiNum();
+            });
 
-                currRecipeIngredients.forEach(function (element) {
-                    const newElInner = `
+            currRecipeIngredients.forEach(function (element) {
+                const newElInner = `
     ${element}
         <i class="far fa-edit" id="description-edit"></i>
         <i class="far fa-trash-alt" id="description-basket"></i>
     `;
-                    const newLiEl = document.createElement('li');
+                const newLiEl = document.createElement('li');
 
-                    newLiEl.innerHTML = newElInner;
-                    descriptionList.appendChild(newLiEl);
-                });
+                newLiEl.innerHTML = newElInner;
+                descriptionList.appendChild(newLiEl);
+            });
 
-                document.querySelector('#new-receipe-name').value = currRecipeName;
-                document.querySelector('#new-receipe-description').value = currRecipeDescription;
+            document.querySelector('#new-receipe-name').value = currRecipeName;
+            document.querySelector('#new-receipe-description').value = currRecipeDescription;
 
 
 
-             recipeArr.splice(currRecipeID - 1, 1);
+            recipeArr.splice(currRecipeID - 1, 1);
 
 
             localStorage.setItem("recipe", JSON.stringify(recipeArr));
@@ -260,25 +256,25 @@ if (localStorage.getItem("recipe") !== null) {
         }
 
         const deleteButtons = document.querySelectorAll('.delete-button');
-            if(event.target.classList.contains('delete-recipe')) {
-                if(deleteButtons.length === 1) {
-                    localStorage.removeItem('recipe');
-                    loadRecipesList();
+        if(event.target.classList.contains('delete-recipe')) {
+            if(deleteButtons.length === 1) {
+                localStorage.removeItem('recipe');
+                loadRecipesList();
 
-                } else {
-                    const currRecipeID = JSON.parse(event.target.parentElement.parentElement.firstElementChild.textContent);
-                    const currIndex = currRecipeID - 1;
-                    const recipeArr = JSON.parse(localStorage.recipe);
-                    localStorage.removeItem('recipe');
-                    recipeArr.splice(currIndex, 1);
-                    localStorage.setItem("recipe", JSON.stringify(recipeArr));
-                    loadRecipesList();
+            } else {
+                const currRecipeID = JSON.parse(event.target.parentElement.parentElement.firstElementChild.textContent);
+                const currIndex = currRecipeID - 1;
+                const recipeArr = JSON.parse(localStorage.recipe);
+                localStorage.removeItem('recipe');
+                recipeArr.splice(currIndex, 1);
+                localStorage.setItem("recipe", JSON.stringify(recipeArr));
+                loadRecipesList();
 
-                }
-                fillArrWithRecipes();
-             }
+            }
+            fillArrWithRecipes();
+        }
     });
-}
+}}
 
 /*
  **********************************************************************
