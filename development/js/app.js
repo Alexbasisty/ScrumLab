@@ -7,7 +7,12 @@ function loadPage() {
         userDefault.innerText = JSON.parse(localStorage.savedName);
         if (greetingSection !== null) {
             greetingSection.style.display = "none";
+            document.querySelector('section.pulpit').style.display = "inherit";
         }
+    }
+    else {
+        document.querySelector('section.pulpit').style.display = "none";
+
     }
 }
 if (formEl !== null) {
@@ -19,6 +24,7 @@ if (formEl !== null) {
         localStorage.setItem('savedName', JSON.stringify(userName));
         userDefault.innerText = JSON.parse(localStorage.savedName);
 
+        document.querySelector('section.pulpit').style.display = "inherit";
 
         greetingSection.style.display = "none";
     });
@@ -131,7 +137,7 @@ saveCloseButton.addEventListener('click',function () {
     const nameRecipeValue = document.querySelector('#new-receipe-name').value;
     const descriptionFieldValue = document.querySelector('#new-receipe-description').value;
 
- if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0 && saveCloseButton.classList.contains('after-edit') !== true) {
+ if (nameRecipeValue.length > 0 && descriptionFieldValue.length > 0) {
      const recipeKey = new Recipe(allRecipes.length + 1, nameRecipeValue, descriptionFieldValue);
 
      const allInstructionContent = document.querySelectorAll('.instruction');
@@ -237,21 +243,23 @@ if (localStorage.getItem("recipe") !== null) {
 
                 document.querySelector('#new-receipe-name').value = currRecipeName;
                 document.querySelector('#new-receipe-description').value = currRecipeDescription;
-                const saveButton = document.querySelector('.add-receipe-header button');
-                saveButton.classList.add('after-edit');
-                saveEditedButton = document.querySelector('.after-edit');
 
-                saveEditedButton.addEventListener('click', function (event) {
+                const saveButton = document.querySelector('.add-receipe-header button');
+                saveButton.classList.remove('save-close');
+
+                saveButton.addEventListener('click', function (event) {
                     currRecipeObject.title = document.querySelector('#new-receipe-name').value;
                     currRecipeObject.description = document.querySelector('#new-receipe-description').value;
-                    saveEditedButton.classList.remove('after-edit');
+
                     localStorage.setItem('recipe', JSON.stringify(recipeArr));
+
                     fillArrWithRecipes();
-                    loadRecipesList()
+                    loadRecipesList();
+
+                    saveButton.classList.add('save-close');
                 });
 
 
-            fillArrWithRecipes();
         }
 
         const deleteButtons = document.querySelectorAll('.delete-button');
