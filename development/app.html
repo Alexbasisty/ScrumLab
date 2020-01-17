@@ -37,7 +37,7 @@
     </aside>
 
 
-      <section class="greeting-section hidden">
+       <section class="greeting-section hidden">
       <div class="greeting-section">
         <h2>Witaj,</h2>
         <h4>wygląda na to że jesteś tutaj pierwszy raz!</h4>
@@ -48,17 +48,19 @@
 
         <p>Podaj nam swoje imię, a my zorganizujemy dla Ciebie naszą aplikację :)</p>
       </div>
-    </section>
+    </section> 
 
         <section class="pulpit">
           <div class="pulpit">
 
             <div class="widgets">
               <div class="left-side">
+                <a href="recipes.html">
                 <div class="add-recipe">
                   <i class="fa fa-plus-square-o"></i>
                   <p>dodaj przepis</p>
                 </div>
+                </a>
                 <div class="add-plan">
                   <i class="fa fa-plus-square-o"></i>
                   <p>dodaj plan</p>
@@ -151,8 +153,272 @@
           </div>
         </section>
 
-    <section class="plans"></section>
+    
+
+    <section class="add-new-plan">
+
+      <div class="top-bar">
+        <h1 class="title">NOWY PLAN</h1>
+        <button class="submit">Zapisz i zamknij</button>
+      </div>
+    
+      <div class="plan-form">
+        <form>
+          <div class="plan-name">
+            <label class="plan-name">Nazwa planu</label>
+            <input class="plan-name" type="text" name="plan-name">
+          </div>
+          <div class="plan-description">
+            <label class="plan-description">Opis planu</label>
+            <textarea class="plan-description" type="text" name="plan-description" rows="10" cols="110"></textarea>
+        </div>
+          <div class="plan-week-number">
+            <label class="plan-week-number">Numer tygodnia</label>
+            <input class="plan-week-number" type="number" name="plan-week-number">
+          </div>
+        </form>
+      </div>
+    
+      <div class="grid">
+      <div class="week-schedule-select grid">
+      <div class="row">
+        <ul class="meals">
+          <li class="col-1"></li>
+          <li class="col-1" >ŚNIADANIE</li >
+          <li class="col-1">DRUGIE <br> ŚNIADANIE</li>
+          <li class="col-1">ZUPA</li>
+          <li class="col-1"> DRUGIE <br>DANIE</li>
+          <li class="col-1">KOLACJA</li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="monday">
+          <li class="day col-1">PONIEDZIAŁEK</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="tuesday">
+          <li class="day col-1">WTOREK</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="wednesday">
+          <li class="day col-1">ŚRODA</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+    
+      <div class="row">
+        <ul class="thursday">
+          <li class="day col-1">CZWARTEK</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="friday">
+          <li class="day col-1">PIĄTEK</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="saturday">
+          <li class="day col-1">SOBOTA</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="row">
+        <ul class="sunday">
+          <li class="day col-1">NIEDZIELA</li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+          <li>
+            <select class="meal col-1">
+              <option value="Zapiekanka z ziemniakami">Zapiekanka z ziemniakami</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    
+    
+      </div>
+    </section>
+    
+
+    
     </main>
+
+
 
     <script src="./js/app.js"></script>
   </body>
